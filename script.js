@@ -1,118 +1,54 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Custom Cursor
-    const cursor = document.querySelector('.cursor');
-    const cursor2 = document.querySelector('.cursor2');
+document.addEventListener('DOMContentLoaded', () => {
     
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursor2.style.left = e.clientX + 'px';
-        cursor2.style.top = e.clientY + 'px';
-    });
-
-    // Navbar scroll effects
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.backdropFilter = 'blur(30px)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.backdropFilter = 'blur(20px)';
-        }
-    });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu on link click
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Intersection Observer for animations
+    // 1. Scroll Animations (Intersection Observer)
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animationDelay = `${index * 0.1}s`;
-                entry.target.style.animation = 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe sections
-    document.querySelectorAll('.project-card, .skill-category, .contact-link').forEach(el => {
-        el.style.opacity = '0';
+    // Target elements to animate
+    const fadeElements = document.querySelectorAll('.fade-in, .skill-card, .project-card, .timeline-item');
+    fadeElements.forEach(el => {
+        el.classList.add('fade-in'); // Ensure class exists
         observer.observe(el);
     });
 
-    // Parallax effect for floating shapes
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const shapes = document.querySelectorAll('.shape');
-        shapes.forEach((shape, index) => {
-            const speed = 0.5 + (index * 0.2);
-            shape.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+    // 2. Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        if (navLinks.style.display === 'flex') {
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = '#FDFBF7';
+            navLinks.style.padding = '2rem';
+            navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        }
     });
 
-    // Button hover effects
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-            btn.style.background = 'rgba(255,255,255,1)';
+    // 3. Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            navLinks.style.display = ''; // Close mobile menu on click
+            
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.background = 'rgba(255,255,255,0.95)';
-        });
-    });
-
-    // Project card tech filter (placeholder)
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const tech = card.getAttribute('data-tech');
-            // Add glow effect based on tech
-            card.style.boxShadow = `0 0 40px rgba(102, 126, 234, 0.4)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.boxShadow = 'var(--shadow)';
-        });
-    });
-
-    // Typing effect for hero title (optional)
-    const titleSpans = document.querySelectorAll('.hero-title span');
-    titleSpans.forEach((span, index) => {
-        setTimeout(() => {
-            span.style.opacity = '1';
-            span.style.transform = 'translateY(0)';
-        }, index * 300);
     });
 });
