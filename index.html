@@ -1,72 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shikha Shetty | Data Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Shikha Shetty | Data Analyst Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: '#84A98C',
+                        sand: '#F9F9F7',
+                        charcoal: '#2F3E46',
+                        white: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-sand text-charcoal font-sans selection:bg-sage selection:text-white antialiased">
 
-    <header class="navbar">
-        <div class="logo">SS</div>
-        <nav>
-            <a href="mailto:shikhajshetty@gmail.com">Contact</a>
-            <a href="https://linkedin.com/in/shikhashetty06" target="_blank">LinkedIn</a>
-        </nav>
-    </header>
-
-    <main class="container">
-        <section class="pin hero">
-            <h1>Shikha Shetty</h1>
-            [cite_start]<p class="subtitle">Data Labs Intern at Convin.ai [cite: 13, 14]</p>
-            [cite_start]<p class="bio">Business Analyst focused on Customer Success Metrics, Stakeholder Communication, and Data-Driven Insights. [cite: 7]</p>
-        </section>
-
-        <section class="pin experience">
-            <span class="tag">Work Experience</span>
-            [cite_start]<h2>Convin.ai [cite: 13]</h2>
-            [cite_start]<p><strong>Data Labs Intern</strong> (Jul 2025 - Jan 2026) [cite: 14, 15]</p>
-            <ul>
-                [cite_start]<li>Analyzed client-wise conversation data and KPIs using Postcall and Voicebot tools. [cite: 17]</li>
-                [cite_start]<li>Converted call recordings into structured transcripts via Retool. [cite: 17]</li>
-                [cite_start]<li>Created validated SQL queries for win-loss and performance reporting. [cite: 18]</li>
-            </ul>
-        </section>
-
-        <section class="pin project">
-            <span class="tag">Case Study</span>
-            [cite_start]<h2>Credit Risk Analysis [cite: 24]</h2>
-            [cite_start]<p>Analyzed 30,000+ banking customers to predict default risk using Logistic Regression (78% accuracy). [cite: 27, 28]</p>
-            [cite_start]<div class="tech-stack">SQL • Python • Power BI [cite: 26]</div>
-        </section>
-
-        <section class="pin skills">
-            <h2>Technical Toolkit</h2>
-            <div class="skills-grid">
-                [cite_start]<div><strong>Analysis:</strong> SQL (Advanced), Python (Pandas, NumPy) [cite: 8]</div>
-                [cite_start]<div><strong>Viz:</strong> Power BI, Tableau, Excel [cite: 9]</div>
-                [cite_start]<div><strong>Tools:</strong> Jira, Retool, Mailmodo, Keka [cite: 10]</div>
+    <nav class="fixed w-full z-50 bg-sand/90 backdrop-blur-sm border-b border-sage/10">
+        <div class="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight text-sage hover:text-charcoal transition-colors">S.S.</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide opacity-80">
+                <a href="#about" class="hover:text-sage transition-colors">About</a>
+                <a href="#skills" class="hover:text-sage transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-sage transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-sage transition-colors">Projects</a>
             </div>
-        </section>
+            <a href="mailto:shikhajshetty@gmail.com" class="px-6 py-2 bg-charcoal text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-sage transition-all duration-300 shadow-lg">
+                Hire Me
+            </a>
+        </div>
+    </nav>
 
-        <section class="pin project">
-            <span class="tag">Data Viz</span>
-            [cite_start]<h2>E-commerce Sales Analysis [cite: 29]</h2>
-            [cite_start]<p>Built interactive dashboards to highlight sales trends and customer behavior. [cite: 33]</p>
-            [cite_start]<div class="tech-stack">MySQL • Python • Power BI [cite: 30]</div>
-        </section>
+    <section id="about" class="min-h-screen flex flex-col justify-center items-center px-6 text-center max-w-4xl mx-auto pt-20">
+        <div class="animate-fade-in-up">
+            <span class="inline-block px-4 py-1.5 mb-8 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full bg-sage/10 text-sage border border-sage/20">
+                Data Analyst & Customer Success
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl font-medium leading-tight mb-8 text-charcoal">
+                Turning raw data into <br />
+                <span class="italic text-sage">strategic clarity.</span>
+            </h1>
+            <p class="text-lg md:text-xl opacity-70 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                Hi, I'm <strong class="text-sage font-medium">Shikha Shetty</strong>. Currently analyzing conversational intelligence at 
+                [cite_start]<strong class="text-charcoal font-medium">Convin.ai</strong>[cite: 13]. [cite_start]I bridge the gap between technical SQL queries and actionable business insights[cite: 16].
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#" class="px-8 py-3.5 bg-sage text-white text-sm font-bold tracking-wide rounded-lg hover:bg-charcoal transition-all duration-300 shadow-xl shadow-sage/20">
+                    Download Resume
+                </a>
+                <a href="https://linkedin.com/in/shikhashetty06" target="_blank" class="px-8 py-3.5 border border-charcoal/20 text-charcoal text-sm font-bold tracking-wide rounded-lg hover:border-sage hover:text-sage transition-all duration-300 bg-white">
+                    [cite_start]LinkedIn Profile [cite: 4]
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <section class="pin achievements">
-            <h2>Achievements</h2>
-            <ul>
-                [cite_start]<li>Client Appreciation: Flipkart & Titan [cite: 36]</li>
-                [cite_start]<li>GeeksforGeeks Data Analytics Certified [cite: 35]</li>
-            </ul>
-        </section>
-    </main>
+    <section id="skills" class="py-20 bg-white border-y border-sage/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="font-serif text-3xl mb-16 text-center text-charcoal">Technical Arsenal</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-sand hover:bg-sage/10 transition-colors">
+                    <h3 class="font-bold mb-2 text-charcoal">Python</h3>
+                    [cite_start]<p class="text-xs opacity-60">Pandas, NumPy, EDA [cite: 8]</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-sand hover:bg-sage/10 transition-colors">
+                    <h3 class="font-bold mb-2 text-charcoal">SQL</h3>
+                    [cite_start]<p class="text-xs opacity-60">Advanced Queries & ETL [cite: 8]</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-sand hover:bg-sage/10 transition-colors">
+                    <h3 class="font-bold mb-2 text-charcoal">Power BI</h3>
+                    [cite_start]<p class="text-xs opacity-60">Interactive Dashboards [cite: 9]</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-sand hover:bg-sage/10 transition-colors">
+                    <h3 class="font-bold mb-2 text-charcoal">Tools</h3>
+                    [cite_start]<p class="text-xs opacity-60">Retool, Jira, Excel [cite: 10]</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section id="experience" class="py-24 px-6 bg-sand">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-serif text-3xl mb-16 text-center">Experience</h2>
+            
+            <div class="relative border-l border-sage/30 ml-4 md:ml-0 md:pl-10 space-y-12">
+                <div class="relative group">
+                    <div class="absolute -left-[45px] top-0 bg-sage h-4 w-4 rounded-full border-4 border-sand shadow-sm group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col md:flex-row justify-between mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-charcoal">Data Labs Intern</h3>
+                                [cite_start]<p class="text-sage font-medium text-sm mt-1">Convin.ai • Bangalore [cite: 13, 15]</p>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-gray-400 mt-2 md:mt-0 bg-gray-50 px-3 py-1 rounded self-start">Jul 2025 - Present</span>
+                        </div>
+                        
+                        <ul class="space-y-4 text-sm leading-relaxed opacity-80 list-disc list-outside ml-4 marker:text-sage">
+                            [cite_start]<li>Analyzed client-wise conversation data and KPIs using <strong>Convin Postcall & Voicebot</strong>, converting call recordings into structured transcripts via <strong>Retool</strong>[cite: 17].</li>
+                            [cite_start]<li>Created and validated queries to analyze win-loss data and performance trends, ensuring dashboard accuracy[cite: 18].</li>
+                            [cite_start]<li>Delivered account-level reports using <strong>Power BI, Excel, and Google Slides</strong> while monitoring support tickets via <strong>Jira</strong> for timely escalation[cite: 19].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 max-w-5xl mx-auto">
+        <h2 class="font-serif text-3xl mb-16 text-center">Selected Projects</h2>
+        
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="h-48 bg-[#E8E8E4] flex items-center justify-center border-b border-gray-50">
+                    <span class="font-serif text-5xl opacity-10 text-charcoal">01</span>
+                </div>
+                <div class="p-8">
+                    [cite_start]<h3 class="text-lg font-bold mb-3 text-charcoal">Credit Risk Analysis & Prediction [cite: 24]</h3>
+                    <div class="flex gap-2 mb-4 text-[10px] font-bold uppercase tracking-wider text-sage">
+                        <span>Python</span> • <span>SQL</span> • <span>ML</span>
+                    </div>
+                    <p class="text-sm opacity-70 mb-6 leading-relaxed">
+                        Analyzed financial data of <strong>30,000+ banking customers</strong>. [cite_start]Implemented Logistic Regression models achieving <strong>78% accuracy</strong> for credit card default prediction[cite: 27, 28].
+                    </p>
+                    <a href="https://github.com/shikhashetty6" class="inline-block text-xs font-bold border-b border-charcoal pb-0.5 hover:text-sage hover:border-sage transition-colors">
+                        [cite_start]View Code on GitHub [cite: 5]
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="h-48 bg-[#D8E2DC] flex items-center justify-center border-b border-gray-50">
+                    <span class="font-serif text-5xl opacity-10 text-charcoal">02</span>
+                </div>
+                <div class="p-8">
+                    [cite_start]<h3 class="text-lg font-bold mb-3 text-charcoal">E-Commerce Sales Dashboard [cite: 29]</h3>
+                    <div class="flex gap-2 mb-4 text-[10px] font-bold uppercase tracking-wider text-sage">
+                        <span>Power BI</span> • <span>MySQL</span> • <span>ETL</span>
+                    </div>
+                    <p class="text-sm opacity-70 mb-6 leading-relaxed">
+                        Extracted and transformed sales data using SQL. [cite_start]Built interactive Power BI dashboards to highlight product performance and customer behavior trends[cite: 31, 33].
+                    </p>
+                    <a href="https://github.com/shikhashetty6" class="inline-block text-xs font-bold border-b border-charcoal pb-0.5 hover:text-sage hover:border-sage transition-colors">
+                        [cite_start]View Code on GitHub [cite: 5]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-12 text-center text-sm opacity-50 bg-sand border-t border-sage/10">
+        [cite_start]<p class="mb-2">Bangalore, India • +91-8197944487 [cite: 2, 3]</p>
+        <p>© 2025 Shikha Shetty. Designed for Recruiters.</p>
+    </footer>
+
 </body>
 </html>
