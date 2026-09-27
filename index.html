@@ -1,200 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shikha Shetty | Data Analyst Portfolio</title>
-    <meta name="description" content="Portfolio of Shikha Shetty, a Data Analyst specializing in SQL, Python, and Power BI with experience at Convin.ai.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mrinal's Fitness Tracker</title>
+<style>
+:root{
+  --bg:#0a0710; --card:#160f22; --card2:#1d1430; --border:#3d1f66;
+  --purple:#8b3ff0; --neon:#b975ff; --violet:#6a2ec2; --white:#f4eeff; --dim:#a893c4;
+  --ok:#4ade80; --warn:#f5a623;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:radial-gradient(ellipse at top,#1a0f2e,#0a0710 60%);color:var(--white);
+  font-family:'Segoe UI',system-ui,Arial,sans-serif;overflow-x:hidden}
+.om-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.10;
+  background:radial-gradient(circle at 50% 20%,var(--purple),transparent 55%);}
+.om-bg svg{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:340px;opacity:.5}
+.wrap{position:relative;z-index:1}
+h1,h2,h3{margin:0 0 6px;font-weight:700}
+p{margin:0 0 8px;color:var(--dim);line-height:1.5}
+button{font-family:inherit;cursor:pointer;border:none;border-radius:10px;color:var(--white)}
+input,select,textarea{font-family:inherit;background:#0f0a1a;border:1px solid var(--border);color:var(--white);
+  border-radius:8px;padding:8px 10px}
+.glow-btn{background:linear-gradient(135deg,var(--purple),var(--violet));padding:12px 26px;font-size:15px;
+  font-weight:600;box-shadow:0 0 18px rgba(139,63,240,.6);transition:transform .15s,box-shadow .15s}
+.glow-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(185,117,255,.8)}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;
+  padding:16px;box-shadow:0 0 22px rgba(139,63,240,.08)}
+/* Welcome */
+#welcome{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;background:radial-gradient(ellipse at center,#1c1030,#070510 75%)}
+#welcome h1{font-size:clamp(24px,6vw,40px);background:linear-gradient(90deg,var(--neon),var(--white));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.tila-orb{width:90px;height:90px;border-radius:50%;margin:18px auto;position:relative;
+  background:radial-gradient(circle at 35% 30%,#e6d0ff,var(--purple) 60%,#3a1466);
+  box-shadow:0 0 40px rgba(185,117,255,.7);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 25px rgba(185,117,255,.5)}50%{box-shadow:0 0 55px rgba(185,117,255,.9)}}
+.toggle-row{display:flex;gap:10px;margin-top:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+/* App shell */
+header.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;
+  border-bottom:1px solid var(--border);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,7,16,.9);
+  backdrop-filter:blur(6px);z-index:10}
+header.top .brand{font-size:18px;font-weight:700}
+header.top .brand span{color:var(--neon)}
+nav.tabs{display:flex;gap:6px;padding:10px 16px;overflow-x:auto;border-bottom:1px solid var(--border)}
+nav.tabs button{background:transparent;color:var(--dim);padding:8px 14px;border-radius:20px;white-space:nowrap;font-size:14px}
+nav.tabs button.active{background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff}
+main{max-width:980px;margin:0 auto;padding:18px}
+section{display:none}
+section.active{display:block}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.metric b{display:block;font-size:22px;color:var(--neon)}
+.metric span{font-size:12px;color:var(--dim)}
+.check-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #251740}
+.check-row input[type=checkbox]{width:20px;height:20px;accent-color:var(--purple)}
+.check-row label{flex:1;font-size:14px}
+.section-title{font-size:13px;letter-spacing:.03em;color:var(--neon);margin:18px 0 4px}
+.glasses{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.glass{width:40px;height:52px;border:2px solid var(--purple);border-radius:0 0 10px 10px;background:#150e24;
+  display:flex;align-items:flex-end;justify-content:center;font-size:11px;color:var(--dim);cursor:pointer}
+.glass.filled{background:linear-gradient(0deg,var(--neon),var(--purple));color:#fff}
+.progress{height:10px;border-radius:6px;background:#1d1430;overflow:hidden;border:1px solid var(--border)}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--neon))}
+.dateNav{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.field-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
+.field-row label{font-size:12px;color:var(--dim);display:block;margin-bottom:3px}
+.field-row input{width:100%}
+canvas{max-width:100%}
+#tila-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;text-align:right}
+#tila-fab .orb{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e6d0ff,var(--purple) 60%,#3a1466);
+  box-shadow:0 0 25px rgba(185,117,255,.7);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px}
+#tila-panel{width:min(340px,90vw);max-height:60vh;display:none;flex-direction:column;background:var(--card);
+  border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden}
+#tila-panel.open{display:flex}
+#tila-log{flex:1;overflow-y:auto;padding:10px;font-size:13px}
+#tila-log .me{color:var(--neon);text-align:right;margin:4px 0}
+#tila-log .bot{color:var(--white);text-align:left;margin:4px 0}
+.tila-input-row{display:flex;gap:6px;padding:8px;border-top:1px solid var(--border)}
+.tila-input-row input{flex:1}
+.status-pill{font-size:11px;padding:2px 8px;border-radius:10px;background:#251740;color:var(--dim)}
+.food-cards{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.food-card{width:104px;text-align:center;font-size:11px;background:#1d1430;border:1px solid var(--border);
+  border-radius:12px;padding:8px 6px;color:var(--white)}
+.food-card .emo{font-size:28px;display:block;margin-bottom:4px}
+.food-card .name{font-weight:600;display:block;margin-bottom:2px}
+.food-card .det{color:var(--dim);font-size:10px;line-height:1.3}
+.empty{padding:30px;text-align:center;color:var(--dim)}
+.confirmBox{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;display:flex;align-items:center;justify-content:center}
+.confirmBox .card{max-width:320px;text-align:center}
+.confirmBox .row{display:flex;gap:10px;justify-content:center;margin-top:12px}
+footer.note{font-size:12px;color:var(--dim);text-align:center;padding:20px}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
+<div class="om-bg"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="none" stroke="#b975ff" stroke-width="1"/><circle cx="100" cy="100" r="95" fill="none" stroke="#8b3ff0" stroke-width="1"/></svg></div>
+<div class="wrap">
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">S.S.</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="btn-primary">Contact Me</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+<div id="welcome">
+  <div class="tila-orb"></div>
+  <h1>MRINAL'S FITNESS TRACKER</h1>
+  <p style="color:var(--neon);font-style:italic">Your 60-Day Fitness Journey with TILA</p>
+  <p style="max-width:420px">Hello Mrinal, Welcome to your fitness tracker!<br>Your fitness journey starts here. Let's build strength, consistency, and a healthier lifestyle together.</p>
+  <button class="glow-btn" id="startBtn">Start My Journey</button>
+  <div class="toggle-row">
+    <label style="font-size:13px;color:var(--dim)"><input type="checkbox" id="musicToggle" checked> Welcome music</label>
+    <button id="replayBtn" class="status-pill" style="display:none">Replay tune</button>
+  </div>
+</div>
 
-    <header class="hero" id="home">
-        <div class="container hero-content">
-            <span class="eyebrow fade-in">Data Analyst & Business Insight Specialist</span>
-            <h1 class="fade-in delay-1">Turning raw conversation data into <span class="highlight">actionable business strategies.</span></h1>
-            <p class="hero-sub fade-in delay-2">Currently driving customer success analytics at <strong>Convin.ai</strong>. Skilled in SQL, Python, and Power BI.</p>
-            <div class="hero-buttons fade-in delay-3">
-                <a href="#projects" class="btn-primary">View Case Studies</a>
-                <a href="resume.pdf" target="_blank" class="btn-secondary"><i class="fas fa-download"></i> Download Resume</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="about" class="section-pad">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Toolkit</h2>
-                <p>Bridging the gap between complex data and clear visualization.</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="icon-box"><i class="fas fa-database"></i></div>
-                    <h3>Data Analysis</h3>
-                    <p>Advanced SQL Queries, Python (Pandas, NumPy), Data Cleaning & EDA.</p>
-                    <div class="tags">
-                        <span>SQL</span><span>Python</span><span>Exploratory Analysis</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
-                    <h3>Visualization</h3>
-                    <p>Interactive Power BI dashboards, KPI Tracking, Tableau, and Excel Pivots.</p>
-                    <div class="tags">
-                        <span>Power BI</span><span>Tableau</span><span>Google Slides</span>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="icon-box"><i class="fas fa-briefcase"></i></div>
-                    <h3>Business Ops</h3>
-                    <p>Customer Success Metrics, Ticket Analysis (Jira), Win-Loss Reporting.</p>
-                    <div class="tags">
-                        <span>Retool</span><span>Jira</span><span>CRM Systems</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="app" style="display:none">
+  <header class="top">
+    <div class="brand">MRINAL'S <span>FITNESS</span> TRACKER</div>
+    <div class="status-pill" id="todayPill"></div>
+  </header>
+  <nav class="tabs">
+    <button data-tab="home" class="active">Home</button>
+    <button data-tab="tracker">Daily Tracker</button>
+    <button data-tab="dashboard">Dashboard</button>
+    <button data-tab="history">History</button>
+    <button data-tab="settings">Settings</button>
+  </nav>
+  <main>
+    <section id="home" class="active">
+      <h2>Your Fitness Journey with TILA</h2>
+      <p id="homeMsg"></p>
+      <div class="grid" id="homeCards"></div>
     </section>
 
-    <section id="experience" class="section-pad bg-cream">
-        <div class="container">
-            <div class="section-header">
-                <h2>Professional Experience</h2>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2025 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Data Labs Intern</h3>
-                        <h4>Convin.ai | Bangalore, India</h4>
-                        <ul class="job-details">
-                            <li><strong>Client Success:</strong> Supported account management by analyzing client-wise conversation data using Convin Postcall and Voicebot.</li>
-                            <li><strong>Data Engineering:</strong> Converted call recordings into structured transcripts via Retool to track account health.</li>
-                            <li><strong>Reporting:</strong> Created validated queries to analyze win-loss and performance data, ensuring dashboard accuracy.</li>
-                            <li><strong>Visualization:</strong> Delivered account-level dashboards using Power BI and Excel while monitoring support tickets via Jira.</li>
-                        </ul>
-                        <div class="tech-stack-mini">
-                            <small>SQL</small><small>Retool</small><small>Power BI</small><small>Jira</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="tracker">
+      <div class="dateNav">
+        <button class="status-pill" id="prevDay">&larr; Prev</button>
+        <input type="date" id="dateInput" min="2026-09-28" max="2026-11-26">
+        <button class="status-pill" id="nextDay">Next &rarr;</button>
+        <button class="status-pill" id="todayBtn">Today</button>
+      </div>
+      <div class="card">
+        <div class="section-title">Morning &amp; Meals</div>
+        <div id="mealList"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="section-title">Hydration</div>
+        <div class="glasses" id="glasses"></div>
+        <div class="progress"><i id="waterBar" style="width:0%"></i></div>
+        <p id="waterText"></p>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="section-title" id="workoutTitle">Gym &amp; Workout</div>
+        <div class="check-row"><input type="checkbox" id="workoutDone"><label id="workoutLabel">Workout completed</label></div>
+        <div class="field-row" id="workoutFields">
+          <div><label>Workout type</label><input id="wType"></div>
+          <div><label>Exercises</label><input id="wEx"></div>
+          <div><label>Sets x Reps</label><input id="wSets"></div>
+          <div><label>Duration (min)</label><input type="number" id="wDur"></div>
         </div>
+        <textarea id="wNotes" placeholder="Notes on strength/energy" style="width:100%;margin-top:6px" rows="2"></textarea>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="section-title">Fruit &amp; Vegetable Tracker</div>
+        <div id="fvList" class="grid"></div>
+        <div style="margin-top:8px"><input id="customFood" placeholder="Add custom food + Enter"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="section-title">Recovery &amp; Sleep</div>
+        <div id="recList"></div>
+        <div class="field-row">
+          <div><label>Sleep hours</label><input type="number" step="0.5" id="sleepHours"></div>
+          <div><label>Energy (1-5)</label><input type="number" min="1" max="5" id="energy"></div>
+          <div><label>Soreness (1-5)</label><input type="number" min="1" max="5" id="soreness"></div>
+          <div><label>Body weight (kg)</label><input type="number" step="0.1" id="weight"></div>
+        </div>
+        <textarea id="dayNotes" placeholder="Daily notes" style="width:100%;margin-top:6px" rows="2"></textarea>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="section-title">Nutrition Numbers (for Dashboard)</div>
+        <div class="field-row">
+          <div><label>Protein intake today (g)</label><input type="number" id="proteinIn"></div>
+          <div><label>Calorie intake today</label><input type="number" id="calIn"></div>
+        </div>
+      </div>
     </section>
 
-    <section id="projects" class="section-pad">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>End-to-end data pipelines from extraction to insight.</p>
-            </div>
-
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="project-image project-1-bg">
-                        <div class="overlay">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Credit Risk Analysis & Prediction</h3>
-                        <p class="project-desc">Analyzed financial data of <strong>30,000+ banking customers</strong> to evaluate default risk. Implemented logistic regression models achieving <strong>78% accuracy</strong>.</p>
-                        <div class="project-meta">
-                            <span><i class="fab fa-python"></i> Python</span>
-                            <span><i class="fas fa-table"></i> SQL</span>
-                            <span><i class="fas fa-brain"></i> ML</span>
-                        </div>
-                        <a href="https://github.com/shikhashetty06" target="_blank" class="link-arrow">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image project-2-bg">
-                        <div class="overlay">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Sales Dashboard</h3>
-                        <p class="project-desc">Extracted sales data via SQL and performed rigorous data cleaning. Built interactive <strong>Power BI dashboards</strong> to highlight product performance and customer behavior.</p>
-                        <div class="project-meta">
-                            <span><i class="fas fa-database"></i> MySQL</span>
-                            <span><i class="fas fa-chart-bar"></i> Power BI</span>
-                        </div>
-                        <a href="https://github.com/shikhashetty06" target="_blank" class="link-arrow">View on GitHub <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
+    <section id="dashboard">
+      <h2>Your Fitness Progress</h2>
+      <select id="rangeSel" class="status-pill">
+        <option value="today">Today</option><option value="yesterday">Yesterday</option>
+        <option value="7">Last 7 Days</option><option value="14">Last 14 Days</option>
+        <option value="30">Last 30 Days</option><option value="60" selected>Full 60 Days</option>
+      </select>
+      <div id="dashEmpty" class="empty" style="display:none">Your fitness journey is waiting to begin. Complete today's checklist to see your progress.</div>
+      <div id="dashBody">
+        <div class="grid" id="dashCards" style="margin:14px 0"></div>
+        <div class="card" style="margin-bottom:12px"><h3>Daily Habit Completion %</h3><canvas id="chartCompletion" height="160"></canvas></div>
+        <div class="card"><h3>Body Weight Trend (kg)</h3><canvas id="chartWeight" height="160"></canvas></div>
+      </div>
     </section>
 
-    <section class="section-pad bg-cream">
-        <div class="container split-layout">
-            <div class="education">
-                <h3>Education</h3>
-                <div class="edu-item">
-                    <h4>B.E. in Electronics & Communication</h4>
-                    <p>NIE Institute of Technology | CGPA: 6.74/10</p>
-                </div>
-            </div>
-            <div class="certs">
-                <h3>Certifications & Achievements</h3>
-                <ul class="cert-list">
-                    <li><i class="fas fa-certificate"></i> GeeksforGeeks Data Analytics Program</li>
-                    <li><i class="fas fa-star"></i> Client Appreciation from Flipkart & Titan (during Internship)</li>
-                </ul>
-            </div>
-        </div>
+    <section id="history">
+      <h2>History</h2>
+      <p>Pick any date from the 60-day plan to view or edit its saved entry.</p>
+      <input type="date" id="histDate" min="2026-09-28" max="2026-11-26">
+      <div class="card" id="histCard" style="margin-top:12px"></div>
     </section>
 
-    <footer id="contact">
-        <div class="container footer-content">
-            <div class="contact-cta">
-                <h2>Let's analyze the future together.</h2>
-                <p>Open for Data Analyst roles in Bangalore.</p>
-                <a href="mailto:shikhajshetty@gmail.com" class="btn-primary">shikhajshetty@gmail.com</a>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://linkedin.com/in/shikhashetty06" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/shikhashetty06" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://hackerrank.com/shikhashetty6" target="_blank"><i class="fab fa-hackerrank"></i></a>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Shikha Shetty. Built with code.</p>
-            </div>
+    <section id="settings">
+      <h2>Settings</h2>
+      <div class="card">
+        <div class="field-row">
+          <div><label>Daily protein target (g)</label><input type="number" id="setProtein"></div>
+          <div><label>Daily calorie target</label><input type="number" id="setCalorie"></div>
+          <div><label>Daily water target (L)</label><input type="number" step="0.1" id="setWater"></div>
+          <div><label>Glass size (ml)</label><input type="number" id="setGlassMl"></div>
+          <div><label>Number of glasses/day</label><input type="number" id="setGlassCount"></div>
+          <div><label>Target body weight (kg)</label><input type="number" id="setWeightGoal"></div>
+          <div><label>Daily sleep goal (hrs)</label><input type="number" step="0.5" id="setSleep"></div>
         </div>
-    </footer>
+        <p style="font-size:12px">Workout schedule: 8:00 PM, Mon–Fri &middot; Breakfast 9:00 AM &middot; Lunch 2:00 PM. Defaults are not medical advice — adjust freely.</p>
+        <label style="display:block;margin:6px 0"><input type="checkbox" id="setMusic" checked> Welcome music on/off</label>
+        <label style="display:block;margin:6px 0"><input type="checkbox" id="setVoice" checked> TILA voice on/off</label>
+        <button class="glow-btn" id="saveSettings">Save changes</button>
+        <span id="saveMsg" style="color:var(--ok);margin-left:10px;font-size:13px"></span>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <h3>Data &amp; Backup</h3>
+        <p>Data is saved to this browser's local storage only — it stays on this device/browser and is not synced elsewhere.</p>
+        <button class="status-pill" id="exportCsv">Export CSV</button>
+        <button class="status-pill" id="backupJson">Backup (JSON)</button>
+        <label class="status-pill" style="display:inline-block">Restore <input type="file" id="restoreFile" style="display:none"></label>
+      </div>
+    </section>
+  </main>
+  <footer class="note">Built for Mrinal &middot; local-storage single-device version</footer>
+</div>
 
-    <script src="script.js"></script>
+<div id="tila-fab">
+  <div id="tila-panel">
+    <div style="padding:8px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <b>TILA</b><span class="status-pill" id="tilaStatus">Ready</span>
+    </div>
+    <div id="tila-log"></div>
+    <div class="tila-input-row">
+      <input id="tilaText" placeholder="Ask TILA...">
+      <button id="tilaMic" class="status-pill">🎤</button>
+      <button id="tilaSend" class="status-pill">Send</button>
+    </div>
+  </div>
+  <div class="orb" id="tilaOrb">🤖</div>
+</div>
+
+</div>
+<script>
+const DSTART=new Date(2026,8,28), DEND=new Date(2026,10,26);
+const fmt=d=>d.toISOString().slice(0,10);
+const todayClamped=()=>{const t=new Date();return t<DSTART?DSTART:(t>DEND?DEND:t)};
+let curDate=fmt(todayClamped());
+
+const MEALS=[["morningWater","Drink a glass of water after waking up"],["nuts","Soaked almonds, cashews, pistachios, dates"],
+["breakfast","Eat breakfast at 9:00 AM"],["breakfastProtein","Include eggs or protein-rich food"],["morningFruit","Morning fruit serving"],
+["lunch","Eat lunch at 2:00 PM"],["lunchGrain","Rice or roti"],["lunchProtein","Dal or protein-rich veg food"],["lunchVeg","Vegetables"],["lunchCurd","Curd or dairy serving"],
+["snack","Healthy evening snack"],["snackShake","Protein shake / smoothie"],["snackFruit","Fruit serving (if not done)"],
+["dinner","Dinner with protein-rich food"],["dinnerNonVeg","Chicken on planned non-veg days"],["dinnerVeg","Vegetables at dinner"],["dinnerTime","Dinner at suitable time around workout"],
+["proteinTarget","Met daily protein target"],["calorieTarget","Met daily calorie target"],["fruitVegTarget","Ate planned fruit & veg amount"],["whey","Whey protein (if planned)"],["creatine","Creatine (if planned)"]];
+const FV=[["banana","Banana"],["apple","Apple"],["papaya","Papaya"],["orange","Orange"],["amla","Amla"],["seasonal","Seasonal fruit"],
+["beetroot","Beetroot"],["carrot","Carrot"],["cucumber","Cucumber"],["spinach","Spinach"],["broccoli","Broccoli"],["otherveg","Other seasonal veg"]];
+const REC=[["sleepRoutine","Completed my planned sleep routine"],["sufficientSleep","Got sufficient sleep"],
+["stretching","Completed stretching or mobility exercises"],["recoveryRoutine","Followed my recovery routine"],["noJunk","Avoided unnecessary junk food"]];
+
+function defaultSettings(){return{protein:120,calorie:2200,water:2,glassMl:250,glassCount:8,weightGoal:72,sleep:7,music:true,voice:true}}
+let settings=JSON.parse(localStorage.getItem('mft_settings')||'null')||defaultSettings();
+
+/* ---------- Cloud database layer (falls back to local-only if unavailable) ---------- */
+let db=null, dbReady=false, daysCache={};
+async function initDb(){
+  try{ db = await window.claude.use('db'); }catch(e){ db=null; }
+  if(!db){ setSyncPill(false); return; }
+  dbReady=true; setSyncPill(true);
+  try{
+    const setSnap = await db.doc('settings/main').get();
+    if(setSnap.exists) settings=Object.assign(defaultSettings(),setSnap.data());
+  }catch(e){}
+  db.collection('days').onSnapshot(snap=>{
+    snap.docs.forEach(d=>{daysCache[d.id]=d.data(); localStorage.setItem('mft_'+d.id,JSON.stringify(d.data()));});
+    refreshCurrentView();
+  }, e=>{ dbReady=false; setSyncPill(false); });
+}
+function setSyncPill(on){
+  const el=document.getElementById('todayPill');
+  if(el) el.dataset.sync = on?'Cloud synced':'Local only (this browser)';
+}
+function refreshCurrentView(){
+  renderHome();
+  if(document.getElementById('tracker').classList.contains('active')) renderTracker();
+  if(document.getElementById('dashboard').classList.contains('active')) renderDashboard();
+}
+
+function loadDay(d){
+  if(daysCache[d])return daysCache[d];
+  const raw=localStorage.getItem('mft_'+d);
+  if(raw)return JSON.parse(raw);
+  const day=new Date(d).getDay(); // 0 Sun..6 Sat
+  const isWeekday=day>=1&&day<=5;
+  const meals={},fv={},rec={};
+  MEALS.forEach(([k])=>meals[k]=false);
+  FV.forEach(([k])=>fv[k]=false);
+  REC.forEach(([k])=>rec[k]=false);
+  return {meals,fv,customFoods:[],water:Array(8).fill(false),
+    workout:{applicable:isWeekday,done:false,type:'',exercises:'',sets:'',dur:'',notes:''},
+    rec,sleepHours:'',energy:'',soreness:'',weight:'',dayNotes:'',protein:'',calories:''};
+}
+function saveDay(d,data){
+  daysCache[d]=data;
+  localStorage.setItem('mft_'+d,JSON.stringify(data));
+  if(dbReady){ db.doc('days/'+d).set(data).catch(()=>{ dbReady=false; setSyncPill(false); }); }
+}
+function saveSettingsToStore(){
+  localStorage.setItem('mft_settings',JSON.stringify(settings));
+  if(dbReady){ db.doc('settings/main').set(settings).catch(()=>{}); }
+}
+let day=loadDay(curDate);
+
+function allDates(){const arr=[];let d=new Date(DSTART);while(d<=DEND){arr.push(fmt(d));d.setDate(d.getDate()+1)}return arr}
+function hasDayData(d){return !!(daysCache[d]||localStorage.getItem('mft_'+d));}
+function completionPct(data){
+  let total=MEALS.length+data.water.length+FV.length+REC.length+(data.workout.applicable?1:0);
+  let done=MEALS.filter(([k])=>data.meals[k]).length+data.water.filter(Boolean).length+
+    FV.filter(([k])=>data.fv[k]).length+REC.filter(([k])=>data.rec[k]).length+(data.workout.applicable&&data.workout.done?1:0);
+  return total?Math.round(done/total*100):0;
+}
+
+/* ---------- Welcome / tune ---------- */
+let audioCtx;
+function playTune(){
+  if(!settings.music)return;
+  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
+  const notes=[523,659,784,1046]; let t=audioCtx.currentTime;
+  notes.forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);
+    g.gain.setValueAtTime(0.001,t+i*0.18);g.gain.exponentialRampToValueAtTime(0.15,t+i*0.18+0.03);
+    g.gain.exponentialRampToValueAtTime(0.001,t+i*0.18+0.17);o.start(t+i*0.18);o.stop(t+i*0.18+0.18);});
+}
+document.getElementById('musicToggle').checked=settings.music;
+document.getElementById('musicToggle').onchange=e=>{settings.music=e.target.checked;saveSettingsToStore();};
+document.getElementById('startBtn').onclick=()=>{
+  playTune();
+  document.getElementById('replayBtn').style.display='inline-block';
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('app').style.display='block';
+  localStorage.setItem('mft_seen','1');
+  initApp();
+};
+document.getElementById('replayBtn').onclick=playTune;
+if(localStorage.getItem('mft_seen')){document.getElementById('welcome').style.display='none';document.getElementById('app').style.display='block';}
+
+/* ---------- Tabs ---------- */
+document.querySelectorAll('nav.tabs button').forEach(btn=>btn.onclick=()=>{
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+  if(btn.dataset.tab==='dashboard')renderDashboard();
+  if(btn.dataset.tab==='home')renderHome();
+});
+
+/* ---------- Render Tracker ---------- */
+function renderChecklist(container,items,dataObj,onchange){
+  container.innerHTML='';
+  items.forEach(([k,label])=>{
+    const row=document.createElement('div');row.className='check-row';
+    row.innerHTML=`<input type="checkbox" id="c_${k}"><label for="c_${k}">${label}</label>`;
+    const cb=row.querySelector('input');cb.checked=!!dataObj[k];
+    cb.onchange=()=>{dataObj[k]=cb.checked;onchange()};
+    container.appendChild(row);
+  });
+}
+function persist(){saveDay(curDate,day);renderHome();}
+function renderGlasses(){
+  const g=document.getElementById('glasses');g.innerHTML='';
+  const n=settings.glassCount||8;
+  if(day.water.length!==n){const old=day.water;day.water=Array(n).fill(false).map((_,i)=>old[i]||false)}
+  day.water.forEach((filled,i)=>{
+    const el=document.createElement('div');el.className='glass'+(filled?' filled':'');el.textContent='G'+(i+1);
+    el.onclick=()=>{day.water[i]=!day.water[i];persist();renderGlasses();};
+    g.appendChild(el);
+  });
+  const totalL=(day.water.filter(Boolean).length*(settings.glassMl||250)/1000).toFixed(2);
+  const goal=settings.water||2;
+  document.getElementById('waterBar').style.width=Math.min(100,totalL/goal*100)+'%';
+  document.getElementById('waterText').textContent=`${totalL} L of ${goal} L target`;
+}
+function renderTracker(){
+  document.getElementById('dateInput').value=curDate;
+  const d=new Date(curDate);const wd=d.getDay();const isWeekday=wd>=1&&wd<=5;
+  day=loadDay(curDate);
+  renderChecklist(document.getElementById('mealList'),MEALS,day.meals,persist);
+  renderGlasses();
+  document.getElementById('workoutTitle').textContent=isWeekday?'Gym & Workout (scheduled 8:00 PM)':'Rest / Recovery Day';
+  document.getElementById('workoutLabel').textContent=isWeekday?'Workout completed':'Rest or optional activity completed';
+  document.getElementById('workoutFields').style.display=isWeekday?'grid':'none';
+  const wd2=document.getElementById('workoutDone');wd2.checked=day.workout.done;
+  wd2.onchange=()=>{day.workout.done=wd2.checked;persist();if(wd2.checked&&isWeekday)tilaSay("Great job, Mrinal! Another step toward your fitness goal.")};
+  ['wType','wEx','wSets','wDur','wNotes'].forEach((id,i)=>{
+    const key=['type','exercises','sets','dur','notes'][i];
+    const el=document.getElementById(id);el.value=day.workout[key]||'';
+    el.oninput=()=>{day.workout[key]=el.value;persist();};
+  });
+  const fvContainer=document.getElementById('fvList');fvContainer.innerHTML='';
+  renderChecklist(fvContainer,FV,day.fv,persist);
+  (day.customFoods||[]).forEach((f,idx)=>{
+    const row=document.createElement('div');row.className='check-row';
+    row.innerHTML=`<input type="checkbox" ${f.done?'checked':''}><label>${f.name}</label>`;
+    row.querySelector('input').onchange=e=>{day.customFoods[idx].done=e.target.checked;persist();};
+    fvContainer.appendChild(row);
+  });
+  document.getElementById('customFood').onkeydown=e=>{
+    if(e.key==='Enter'&&e.target.value.trim()){day.customFoods=day.customFoods||[];day.customFoods.push({name:e.target.value.trim(),done:false});e.target.value='';persist();renderTracker();}
+  };
+  renderChecklist(document.getElementById('recList'),REC,day.rec,persist);
+  ['sleepHours','energy','soreness','weight','dayNotes','proteinIn','calIn'].forEach(id=>{
+    const map={sleepHours:'sleepHours',energy:'energy',soreness:'soreness',weight:'weight',dayNotes:'dayNotes',proteinIn:'protein',calIn:'calories'};
+    const key=map[id];const el=document.getElementById(id);el.value=day[key]||'';
+    el.oninput=()=>{day[key]=el.value;persist();};
+  });
+}
+document.getElementById('dateInput').onchange=e=>{curDate=e.target.value;renderTracker();};
+document.getElementById('prevDay').onclick=()=>{const d=new Date(curDate);d.setDate(d.getDate()-1);if(d>=DSTART){curDate=fmt(d);renderTracker();}};
+document.getElementById('nextDay').onclick=()=>{const d=new Date(curDate);d.setDate(d.getDate()+1);if(d<=DEND){curDate=fmt(d);renderTracker();}};
+document.getElementById('todayBtn').onclick=()=>{curDate=fmt(todayClamped());renderTracker();};
+
+/* ---------- Home ---------- */
+function renderHome(){
+  document.getElementById('todayPill').textContent=new Date(curDate).toDateString()+' · '+(document.getElementById('todayPill').dataset.sync||'Connecting…');
+  const d=loadDay(fmt(todayClamped()));
+  const pct=completionPct(d);
+  document.getElementById('homeMsg').textContent=pct===0?"Your fitness journey is waiting to begin. Complete today's checklist to see your progress.":`Today's completion: ${pct}%. Keep going, Boss!`;
+  const waterL=(d.water.filter(Boolean).length*(settings.glassMl||250)/1000).toFixed(2);
+  const cards=[["Completion",pct+"%"],["Water",waterL+" L"],["Workout",d.workout.applicable?(d.workout.done?"Done":"Pending"):"Rest day"],
+    ["Protein",(d.protein||0)+" g"],["Calories",d.calories||0],["Sleep",(d.sleepHours||0)+" hrs"],["Weight",(d.weight||'—')+" kg"]];
+  document.getElementById('homeCards').innerHTML=cards.map(([l,v])=>`<div class="card metric"><b>${v}</b><span>${l}</span></div>`).join('');
+}
+
+/* ---------- History ---------- */
+document.getElementById('histDate').value=curDate;
+document.getElementById('histDate').onchange=e=>{
+  const d=loadDay(e.target.value);const pct=completionPct(d);
+  document.getElementById('histCard').innerHTML=`<b>${e.target.value}</b><p>Completion: ${pct}% &middot; Water: ${d.water.filter(Boolean).length}/${d.water.length} glasses &middot; Workout: ${d.workout.done?'Done':'Not done'} &middot; Weight: ${d.weight||'—'} kg &middot; Protein: ${d.protein||'—'} g</p><button class="status-pill" onclick="curDate='${e.target.value}';document.querySelector('[data-tab=tracker]').click();">Edit this day</button>`;
+};
+
+/* ---------- Dashboard ---------- */
+let chartC,chartW;
+function rangeDates(sel){
+  const all=allDates();const idxToday=all.indexOf(fmt(todayClamped()));
+  if(sel==='today')return[all[idxToday]];
+  if(sel==='yesterday')return[all[Math.max(0,idxToday-1)]];
+  const n=parseInt(sel);const start=Math.max(0,idxToday-n+1);
+  return all.slice(start,idxToday+1);
+}
+function renderDashboard(){
+  const sel=document.getElementById('rangeSel').value;
+  const dates=rangeDates(sel);
+  const data=dates.map(d=>({d,rec:loadDay(d)}));
+  const hasAny=allDates().some(d=>localStorage.getItem('mft_'+d));
+  document.getElementById('dashEmpty').style.display=hasAny?'none':'block';
+  document.getElementById('dashBody').style.display=hasAny?'block':'none';
+  if(!hasAny)return;
+  const trackedDays=data.filter(x=>localStorage.getItem('mft_'+x.d));
+  const workouts=data.reduce((s,x)=>s+((x.rec.workout.applicable&&x.rec.workout.done)?1:0),0);
+  const avgPct=Math.round(data.reduce((s,x)=>s+completionPct(x.rec),0)/(data.length||1));
+  const avgProt=Math.round(data.reduce((s,x)=>s+(+x.rec.protein||0),0)/(data.length||1));
+  const avgWater=(data.reduce((s,x)=>s+x.rec.water.filter(Boolean).length*(settings.glassMl/1000),0)/(data.length||1)).toFixed(2);
+  const weights=data.filter(x=>x.rec.weight).map(x=>+x.rec.weight);
+  const weightChange=weights.length>1?(weights[weights.length-1]-weights[0]).toFixed(1):'—';
+  document.getElementById('dashCards').innerHTML=[
+    ["Days Tracked",trackedDays.length],["Workouts Completed",workouts],["Avg Completion",avgPct+"%"],
+    ["Avg Protein",avgProt+" g"],["Avg Water",avgWater+" L"],["Weight Change",weightChange+" kg"]
+  ].map(([l,v])=>`<div class="card metric"><b>${v}</b><span>${l}</span></div>`).join('');
+  const labels=data.map(x=>x.d.slice(5));
+  const pctData=data.map(x=>completionPct(x.rec));
+  const weightData=data.map(x=>x.rec.weight?+x.rec.weight:null);
+  if(window.Chart){
+    chartC&&chartC.destroy();chartW&&chartW.destroy();
+    chartC=new Chart(document.getElementById('chartCompletion'),{type:'bar',data:{labels,datasets:[{label:'Completion %',data:pctData,backgroundColor:'#b975ff'}]},
+      options:{scales:{y:{beginAtZero:true,max:100,ticks:{color:'#a893c4'}},x:{ticks:{color:'#a893c4'}}},plugins:{legend:{labels:{color:'#f4eeff'}}}}});
+    chartW=new Chart(document.getElementById('chartWeight'),{type:'line',data:{labels,datasets:[{label:'Weight (kg)',data:weightData,borderColor:'#8b3ff0',backgroundColor:'#8b3ff055',spanGaps:true,tension:.3}]},
+      options:{scales:{y:{ticks:{color:'#a893c4'}},x:{ticks:{color:'#a893c4'}}},plugins:{legend:{labels:{color:'#f4eeff'}}}}});
+  }
+}
+document.getElementById('rangeSel').onchange=renderDashboard;
+
+/* ---------- Settings ---------- */
+function loadSettingsUI(){
+  document.getElementById('setProtein').value=settings.protein;
+  document.getElementById('setCalorie').value=settings.calorie;
+  document.getElementById('setWater').value=settings.water;
+  document.getElementById('setGlassMl').value=settings.glassMl;
+  document.getElementById('setGlassCount').value=settings.glassCount;
+  document.getElementById('setWeightGoal').value=settings.weightGoal;
+  document.getElementById('setSleep').value=settings.sleep;
+  document.getElementById('setMusic').checked=settings.music;
+  document.getElementById('setVoice').checked=settings.voice;
+}
+document.getElementById('saveSettings').onclick=()=>{
+  settings={protein:+document.getElementById('setProtein').value||120,calorie:+document.getElementById('setCalorie').value||2200,
+    water:+document.getElementById('setWater').value||2,glassMl:+document.getElementById('setGlassMl').value||250,
+    glassCount:+document.getElementById('setGlassCount').value||8,weightGoal:+document.getElementById('setWeightGoal').value||72,
+    sleep:+document.getElementById('setSleep').value||7,music:document.getElementById('setMusic').checked,voice:document.getElementById('setVoice').checked};
+  saveSettingsToStore();
+  document.getElementById('saveMsg').textContent='Saved!';setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
+  renderTracker();renderHome();
+};
+document.getElementById('exportCsv').onclick=()=>{
+  let csv='date,completion%,water_glasses,workout_done,protein,calories,sleep_hours,weight\n';
+  allDates().forEach(d=>{const r=loadDay(d);if(!localStorage.getItem('mft_'+d)&&!daysCache[d])return;
+    csv+=`${d},${completionPct(r)},${r.water.filter(Boolean).length},${r.workout.done},${r.protein||''},${r.calories||''},${r.sleepHours||''},${r.weight||''}\n`;});
+  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mrinal_fitness_export.csv';a.click();
+};
+document.getElementById('backupJson').onclick=()=>{
+  const obj={};allDates().forEach(d=>{if(localStorage.getItem('mft_'+d)||daysCache[d])obj[d]=loadDay(d);});obj.settings=settings;
+  const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mrinal_fitness_backup.json';a.click();
+};
+document.getElementById('restoreFile').onchange=e=>{
+  const f=e.target.files[0];if(!f)return;const reader=new FileReader();
+  reader.onload=()=>{try{const obj=JSON.parse(reader.result);Object.keys(obj).forEach(k=>{if(k==='settings'){settings=obj[k];saveSettingsToStore();}else{saveDay(k,obj[k]);}});renderTracker();renderHome();loadSettingsUI();alert('Restored, and synced to the cloud if connected!');}catch(err){alert('Invalid backup file.');}};
+  reader.readAsText(f);
+};
+
+/* ---------- TILA ---------- */
+const tila={pending:null};
+const FOOD_SUGGESTIONS={
+  paneer:[{emo:'🧀',name:'Paneer Bhurji + Roti',det:'100g scrambled paneer, light spices, 1-2 rotis — quick protein + carbs to refuel.'},
+    {emo:'🧀',name:'Grilled Paneer Tikka',det:'100g grilled paneer cubes — high protein, lighter than fried versions.'},
+    {emo:'🧀',name:'Palak Paneer + Rice (small)',det:'Paneer in spinach gravy with rice — protein + iron, easy comfort meal.'}],
+  chicken:[{emo:'🍗',name:'Grilled Chicken + Rice',det:'100g grilled chicken with 1 cup rice — classic post-workout combo.'},
+    {emo:'🍗',name:'Chicken Curry (light) + Roti',det:'100g chicken curry, less oil, with 1-2 rotis.'}],
+  egg:[{emo:'🥚',name:'Egg Bhurji + Toast',det:'2 eggs scrambled with veggies, 2 slices toast.'},
+    {emo:'🥚',name:'Boiled Eggs + Banana',det:'2 boiled eggs + 1 banana — fast, no cooking needed.'}],
+  banana:[{emo:'🍌',name:'Banana + Peanut Butter Toast',det:'1 banana with 2 slices PB toast — quick carbs + fat.'}],
+  whey:[{emo:'🥤',name:'Whey Protein Shake',det:'1 scoop whey + milk/water — fast-absorbing protein if tolerated.'}],
+  curd:[{emo:'🥣',name:'Curd + Fruit Bowl',det:'1/2 cup curd with chopped fruit, if tolerated.'}],
+  dal:[{emo:'🍲',name:'Dal + Rice',det:'1 cup dal with 1 cup rice — solid vegetarian protein + carbs.'}]
+};
+function foodCardsHtml(list){
+  return '<div class="food-cards">'+list.map(f=>`<div class="food-card"><span class="emo">${f.emo}</span><span class="name">${f.name}</span><span class="det">${f.det}</span></div>`).join('')+'</div>';
+}
+const tilaOrb=document.getElementById('tilaOrb'),tilaPanel=document.getElementById('tila-panel');
+tilaOrb.onclick=()=>tilaPanel.classList.toggle('open');
+function tilaLog(who,text,extraHtml){const log=document.getElementById('tila-log');const el=document.createElement('div');el.className=who;el.textContent=text;log.appendChild(el);
+  if(extraHtml){const wrap=document.createElement('div');wrap.innerHTML=extraHtml;log.appendChild(wrap);}
+  log.scrollTop=log.scrollHeight;}
+function tilaStatus(s){document.getElementById('tilaStatus').textContent=s;}
+function tilaSay(text,extraHtml){
+  tilaLog('bot',text,extraHtml);tilaPanel.classList.add('open');tilaStatus('Responding');
+  if(settings.voice&&window.speechSynthesis){const u=new SpeechSynthesisUtterance(text);speechSynthesis.speak(u);}
+  setTimeout(()=>tilaStatus('Ready'),900);
+}
+function confirmAction(msg,onYes){
+  const box=document.createElement('div');box.className='confirmBox';
+  box.innerHTML=`<div class="card"><p>${msg}</p><div class="row"><button class="glow-btn" id="yesBtn">Yes</button><button class="status-pill" id="noBtn">Cancel</button></div></div>`;
+  document.body.appendChild(box);
+  box.querySelector('#yesBtn').onclick=()=>{onYes();box.remove();};
+  box.querySelector('#noBtn').onclick=()=>box.remove();
+}
+function reportFor(d){
+  const raw=localStorage.getItem('mft_'+d);
+  if(!raw)return null;
+  const r=JSON.parse(raw);
+  return `Completion ${completionPct(r)}%, water ${r.water.filter(Boolean).length}/${r.water.length} glasses, workout ${r.workout.applicable?(r.workout.done?'done':'not done'):'rest day'}, protein ${r.protein||0} g, calories ${r.calories||0}, sleep ${r.sleepHours||0} hrs, weight ${r.weight||'not logged'} kg.`;
+}
+function handleCommand(text){
+  const t=text.toLowerCase();
+  tilaLog('me',text);tilaStatus('Processing');
+  const todayStr=fmt(todayClamped());
+  const yestD=new Date(todayClamped());yestD.setDate(yestD.getDate()-1);const yestStr=fmt(yestD);
+  if(tila.pending==='post_workout_food'){
+    tila.pending=null;
+    const match=Object.keys(FOOD_SUGGESTIONS).find(k=>t.includes(k));
+    if(match){tilaSay(`Good choice, Boss! Here's what you can have with ${match} after your workout:`,foodCardsHtml(FOOD_SUGGESTIONS[match]));}
+    else{tilaSay('I don\'t have suggestions for that yet, Boss. Try paneer, chicken, egg, dal, curd, banana, or whey.');}
+    return;
+  }
+  if(/what should i eat.*(after (the )?gym|post.?workout|after workout)|after (the )?gym.*(eat|food)|post.?workout.*(eat|food|meal)/.test(t)){
+    tilaSay('Sure, Boss — what would you like to eat? Tell me an ingredient, like paneer, chicken, egg, dal, curd, banana, or whey.');
+    tila.pending='post_workout_food';return;
+  }
+  if(/hello|hi tila/.test(t)){tilaSay('Hello Boss! I\'m ready to help you track your fitness journey. What would you like to know?');return;}
+  if(/what.*(left|remaining)/.test(t)){
+    const r=loadDay(todayStr);const missing=[];
+    MEALS.forEach(([k,l])=>{if(!r.meals[k])missing.push(l);});
+    if(r.workout.applicable&&!r.workout.done)missing.push('Workout');
+    if(!missing.length){tilaSay('Nothing left, Boss — today is fully complete!');}
+    else{tilaSay('Still pending, Boss: '+missing.slice(0,6).join(', ')+(missing.length>6?'...':''));}
+    return;
+  }
+  if(/mark.*(workout).*(complet|done)/.test(t)){
+    confirmAction('Mark today\'s workout as completed?',()=>{
+      const r=loadDay(curDate);r.workout.done=true;saveDay(curDate,r);if(curDate===todayStr)renderTracker();
+      tilaSay('Done, Boss! Workout marked completed and dashboard updated.');
+    });
+    return;
+  }
+  if(/how much protein.*yesterday|yesterday.*protein/.test(t)){
+    const rep=reportFor(yestStr);
+    if(!rep){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that date yet.');return;}
+    const r=JSON.parse(localStorage.getItem('mft_'+yestStr));
+    tilaSay(`You had ${r.protein||0} g of protein yesterday, Boss.`);return;
+  }
+  if(/weight progress|weight trend/.test(t)){
+    document.querySelector('[data-tab=dashboard]').click();
+    tilaSay('Here\'s your weight progress, Boss — check the Dashboard chart.');return;
+  }
+  if(/how many workouts.*month|workouts.*this month/.test(t)){
+    const now=todayClamped();const count=allDates().filter(d=>{const dt=new Date(d);return dt.getMonth()===now.getMonth()&&dt.getFullYear()===now.getFullYear();})
+      .reduce((s,d)=>{const raw=localStorage.getItem('mft_'+d);if(!raw)return s;const r=JSON.parse(raw);return s+((r.workout.applicable&&r.workout.done)?1:0);},0);
+    tilaSay(`You've completed ${count} workouts this month, Boss.`);return;
+  }
+  if(/last 7 days|7-day|weekly report/.test(t)){
+    const days=rangeDates('7');const has=days.some(d=>localStorage.getItem('mft_'+d));
+    if(!has){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that period yet.');return;}
+    document.querySelector('[data-tab=dashboard]').click();document.getElementById('rangeSel').value='7';renderDashboard();
+    tilaSay('Here is your 7-day fitness report, Boss.');return;
+  }
+  if(/28.*september|sep(t)?.*28|report.*today|today.*report/.test(t)){
+    const target=/28/.test(t)?'2026-09-28':todayStr;
+    const rep=reportFor(target);
+    if(!rep){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that date yet.');return;}
+    tilaSay('Here are the reports, Boss. '+rep);return;
+  }
+  tilaSay('Sorry, Boss, I didn\'t quite catch that. Try: "what is left today", "mark my workout as completed", "weight progress", or "how many workouts this month".');
+}
+document.getElementById('tilaSend').onclick=()=>{const inp=document.getElementById('tilaText');if(inp.value.trim()){handleCommand(inp.value.trim());inp.value='';}};
+document.getElementById('tilaText').onkeydown=e=>{if(e.key==='Enter')document.getElementById('tilaSend').click();};
+
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const micBtn=document.getElementById('tilaMic');
+if(SR){
+  const rec=new SR();rec.lang='en-US';rec.interimResults=false;
+  micBtn.onclick=()=>{tilaPanel.classList.add('open');tilaStatus('Listening');try{rec.start();}catch(e){}};
+  rec.onresult=e=>{const text=e.results[0][0].transcript;handleCommand(text);};
+  rec.onerror=()=>{tilaStatus('Ready');tilaSay('I couldn\'t hear that clearly, Boss — try typing instead.');};
+  rec.onend=()=>tilaStatus('Ready');
+}else{micBtn.style.display='none';}
+
+/* ---------- Init ---------- */
+function initApp(){loadSettingsUI();renderTracker();renderHome();initDb();}
+if(localStorage.getItem('mft_seen'))initApp();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </body>
 </html>
