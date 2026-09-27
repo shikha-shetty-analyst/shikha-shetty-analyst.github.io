@@ -3,650 +3,577 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mrinal's Fitness Tracker</title>
+<title>Shikha Shetty | Data Analyst | Business Analytics</title>
+<meta name="description" content="Shikha Shetty, Data Analyst in Bangalore working in business analytics with SQL, Power BI, Tableau, Excel and Python. Open to Business Analyst roles.">
+<meta name="author" content="Shikha Shetty">
+<meta name="keywords" content="Shikha Shetty, Data Analyst, Business Analyst, Business Analytics, SQL, Power BI, Tableau, Bangalore">
+<link rel="canonical" href="https://shikhashetty.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shikhashetty.com/">
+<meta property="og:title" content="Shikha Shetty | Data Analyst | Business Analytics">
+<meta property="og:description" content="Shikha Shetty, Data Analyst in Bangalore working in business analytics with SQL, Power BI, Tableau and Excel.">
+<meta property="og:site_name" content="Shikha Shetty">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shikha Shetty | Data Analyst | Business Analytics">
+<meta name="twitter:description" content="Shikha Shetty, Data Analyst in Bangalore working in business analytics with SQL, Power BI, Tableau and Excel.">
+<meta name="theme-color" content="#F4F6F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1624" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2314213D'/><rect x='14' y='34' width='8' height='16' rx='2' fill='%23F2B84B'/><rect x='28' y='24' width='8' height='26' rx='2' fill='%234FD1B0'/><rect x='42' y='14' width='8' height='36' rx='2' fill='%234FD1B0'/></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Shikha Shetty","jobTitle":"Data Analyst","url":"https://shikhashetty.com/","email":"mailto:shikhajshetty@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Bangalore","addressCountry":"IN"},"sameAs":["https://www.linkedin.com/in/shikhashetty06","https://www.hackerrank.com/shikhashetty6"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 <style>
 :root{
-  --bg:#0a0710; --card:#160f22; --card2:#1d1430; --border:#3d1f66;
-  --purple:#8b3ff0; --neon:#b975ff; --violet:#6a2ec2; --white:#f4eeff; --dim:#a893c4;
-  --ok:#4ade80; --warn:#f5a623;
+  --bg:#F4F6F9;
+  --surface:#FFFFFF;
+  --ink:#14213D;
+  --ink-soft:#4A5670;
+  --line:#DCE2EB;
+  --accent:#0F7A65;
+  --accent-ink:#FFFFFF;
+  --mark:rgba(242,184,75,.45);
+  --grid:rgba(20,33,61,.045);
+  --shadow:0 1px 2px rgba(20,33,61,.06),0 8px 24px -12px rgba(20,33,61,.18);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Public Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --nav-h:64px;
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
-*{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;min-height:100%;background:radial-gradient(ellipse at top,#1a0f2e,#0a0710 60%);color:var(--white);
-  font-family:'Segoe UI',system-ui,Arial,sans-serif;overflow-x:hidden}
-.om-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.10;
-  background:radial-gradient(circle at 50% 20%,var(--purple),transparent 55%);}
-.om-bg svg{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:340px;opacity:.5}
-.wrap{position:relative;z-index:1}
-h1,h2,h3{margin:0 0 6px;font-weight:700}
-p{margin:0 0 8px;color:var(--dim);line-height:1.5}
-button{font-family:inherit;cursor:pointer;border:none;border-radius:10px;color:var(--white)}
-input,select,textarea{font-family:inherit;background:#0f0a1a;border:1px solid var(--border);color:var(--white);
-  border-radius:8px;padding:8px 10px}
-.glow-btn{background:linear-gradient(135deg,var(--purple),var(--violet));padding:12px 26px;font-size:15px;
-  font-weight:600;box-shadow:0 0 18px rgba(139,63,240,.6);transition:transform .15s,box-shadow .15s}
-.glow-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(185,117,255,.8)}
-.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;
-  padding:16px;box-shadow:0 0 22px rgba(139,63,240,.08)}
-/* Welcome */
-#welcome{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:24px;background:radial-gradient(ellipse at center,#1c1030,#070510 75%)}
-#welcome h1{font-size:clamp(24px,6vw,40px);background:linear-gradient(90deg,var(--neon),var(--white));
-  -webkit-background-clip:text;background-clip:text;color:transparent}
-.tila-orb{width:90px;height:90px;border-radius:50%;margin:18px auto;position:relative;
-  background:radial-gradient(circle at 35% 30%,#e6d0ff,var(--purple) 60%,#3a1466);
-  box-shadow:0 0 40px rgba(185,117,255,.7);animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 25px rgba(185,117,255,.5)}50%{box-shadow:0 0 55px rgba(185,117,255,.9)}}
-.toggle-row{display:flex;gap:10px;margin-top:18px;align-items:center;flex-wrap:wrap;justify-content:center}
-/* App shell */
-header.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;
-  border-bottom:1px solid var(--border);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,7,16,.9);
-  backdrop-filter:blur(6px);z-index:10}
-header.top .brand{font-size:18px;font-weight:700}
-header.top .brand span{color:var(--neon)}
-nav.tabs{display:flex;gap:6px;padding:10px 16px;overflow-x:auto;border-bottom:1px solid var(--border)}
-nav.tabs button{background:transparent;color:var(--dim);padding:8px 14px;border-radius:20px;white-space:nowrap;font-size:14px}
-nav.tabs button.active{background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff}
-main{max-width:980px;margin:0 auto;padding:18px}
-section{display:none}
-section.active{display:block}
-.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-.metric b{display:block;font-size:22px;color:var(--neon)}
-.metric span{font-size:12px;color:var(--dim)}
-.check-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #251740}
-.check-row input[type=checkbox]{width:20px;height:20px;accent-color:var(--purple)}
-.check-row label{flex:1;font-size:14px}
-.section-title{font-size:13px;letter-spacing:.03em;color:var(--neon);margin:18px 0 4px}
-.glasses{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.glass{width:40px;height:52px;border:2px solid var(--purple);border-radius:0 0 10px 10px;background:#150e24;
-  display:flex;align-items:flex-end;justify-content:center;font-size:11px;color:var(--dim);cursor:pointer}
-.glass.filled{background:linear-gradient(0deg,var(--neon),var(--purple));color:#fff}
-.progress{height:10px;border-radius:6px;background:#1d1430;overflow:hidden;border:1px solid var(--border)}
-.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--neon))}
-.dateNav{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
-.field-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
-.field-row label{font-size:12px;color:var(--dim);display:block;margin-bottom:3px}
-.field-row input{width:100%}
-canvas{max-width:100%}
-#tila-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;text-align:right}
-#tila-fab .orb{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e6d0ff,var(--purple) 60%,#3a1466);
-  box-shadow:0 0 25px rgba(185,117,255,.7);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px}
-#tila-panel{width:min(340px,90vw);max-height:60vh;display:none;flex-direction:column;background:var(--card);
-  border:1px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden}
-#tila-panel.open{display:flex}
-#tila-log{flex:1;overflow-y:auto;padding:10px;font-size:13px}
-#tila-log .me{color:var(--neon);text-align:right;margin:4px 0}
-#tila-log .bot{color:var(--white);text-align:left;margin:4px 0}
-.tila-input-row{display:flex;gap:6px;padding:8px;border-top:1px solid var(--border)}
-.tila-input-row input{flex:1}
-.status-pill{font-size:11px;padding:2px 8px;border-radius:10px;background:#251740;color:var(--dim)}
-.food-cards{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
-.food-card{width:104px;text-align:center;font-size:11px;background:#1d1430;border:1px solid var(--border);
-  border-radius:12px;padding:8px 6px;color:var(--white)}
-.food-card .emo{font-size:28px;display:block;margin-bottom:4px}
-.food-card .name{font-weight:600;display:block;margin-bottom:2px}
-.food-card .det{color:var(--dim);font-size:10px;line-height:1.3}
-.empty{padding:30px;text-align:center;color:var(--dim)}
-.confirmBox{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:60;display:flex;align-items:center;justify-content:center}
-.confirmBox .card{max-width:320px;text-align:center}
-.confirmBox .row{display:flex;gap:10px;justify-content:center;margin-top:12px}
-footer.note{font-size:12px;color:var(--dim);text-align:center;padding:20px}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1624;--surface:#172136;--ink:#E7ECF4;--ink-soft:#A3AFC4;--line:#26324A;
+    --accent:#4FD1B0;--accent-ink:#0F1624;--mark:rgba(242,184,75,.32);--grid:rgba(231,236,244,.035);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1624;--surface:#172136;--ink:#E7ECF4;--ink-soft:#A3AFC4;--line:#26324A;
+  --accent:#4FD1B0;--accent-ink:#0F1624;--mark:rgba(242,184,75,.32);--grid:rgba(231,236,244,.035);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -14px rgba(0,0,0,.6);
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px) + 12px)}
+body{
+  font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;-webkit-font-smoothing:antialiased;transition:background-color .3s,color .3s;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+mark{background:linear-gradient(transparent 38%,var(--mark) 38%,var(--mark) 92%,transparent 92%);color:inherit;font-weight:700;padding:0 .12em}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:1rem;top:1rem;z-index:100;background:var(--surface);padding:.5rem 1rem}
+
+.nav{position:sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:var(--display);font-weight:800;font-size:1.2rem;text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:.25rem;list-style:none;align-items:center}
+.nav-links a{display:block;text-decoration:none;font-size:.93rem;font-weight:500;color:var(--ink-soft);padding:.45rem .7rem;border-radius:8px;transition:color .2s,background-color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink);background:var(--surface);box-shadow:inset 0 -2px 0 var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:.5rem}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.icon-btn svg{width:18px;height:18px}
+.icon-btn .sun{display:none}
+:root[data-theme="dark"] .icon-btn .sun{display:block}
+:root[data-theme="dark"] .icon-btn .moon{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .icon-btn .sun{display:block}
+  :root:not([data-theme="light"]) .icon-btn .moon{display:none}
+}
+.menu-btn{display:none}
+.nav-cta{font-size:.9rem;padding:.5rem .95rem}
+
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-weight:600;font-size:.98rem;text-decoration:none;padding:.8rem 1.3rem;border-radius:10px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background-color .2s,border-color .2s}
+.btn svg{width:18px;height:18px}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-outline{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost{color:var(--ink);background:var(--surface);border-color:var(--line)}
+
+.hero{padding:clamp(3.5rem,9vw,6.5rem) 0 clamp(3rem,7vw,5rem)}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.status{display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:500;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line);padding:.35rem .8rem;border-radius:999px;margin-bottom:1.5rem}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.8rem,7.5vw,5.2rem);line-height:.98;letter-spacing:-.035em}
+.hero .role{font-family:var(--display);font-weight:500;font-size:clamp(1.2rem,2.4vw,1.55rem);color:var(--accent);margin-top:1rem}
+.hero .tagline{font-size:1.15rem;color:var(--ink-soft);max-width:34ch;margin-top:1rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:1.5rem 1.5rem 1.25rem}
+.sheet-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:.8rem;margin-bottom:.4rem}
+.sheet-head strong{font-family:var(--display);font-size:1.05rem}
+.sheet-head span{font-size:.85rem;color:var(--ink-soft)}
+.sheet-row{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;align-items:center;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.sheet-row:last-child{border-bottom:0}
+.sheet-row b{font-family:var(--display);font-weight:800;font-size:1.9rem;line-height:1;letter-spacing:-.02em}
+.sheet-row b em{font-style:normal;background:linear-gradient(transparent 55%,var(--mark) 55%)}
+.sheet-row p{font-size:.93rem;color:var(--ink-soft);line-height:1.45}
+.sheet-row p small{display:block;color:var(--ink);font-weight:600;font-size:.82rem}
+
+section{padding:clamp(3.5rem,8vw,5.5rem) 0}
+.section-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.25rem}
+.section-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.025em;line-height:1.1}
+.section-head::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-.35rem)}
+
+.about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(2rem,5vw,3.5rem)}
+.about-text p{max-width:64ch}
+.about-text p+p{margin-top:1rem}
+.facts{border-left:3px solid var(--accent);padding-left:1.25rem;display:grid;gap:1rem;align-content:start}
+.facts dt{font-size:.85rem;color:var(--ink-soft)}
+.facts dd{font-weight:600}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem}
+.skill-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+.skill-card h3{font-family:var(--display);font-size:1.15rem;font-weight:700;margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+.skill-card h3 svg{width:22px;height:22px;color:var(--accent);flex:none}
+.skill-card h4{font-size:.85rem;font-weight:600;color:var(--ink-soft);margin:1rem 0 .5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none}
+.chips li{font-size:.88rem;padding:.3rem .7rem;border-radius:7px;background:var(--bg);border:1px solid var(--line)}
+.skill-card.wide{grid-column:span 2}
+
+.timeline{position:relative;list-style:none;display:grid;gap:1.75rem}
+.timeline::before{content:"";position:absolute;left:10.25rem;top:.5rem;bottom:.5rem;width:2px;background:var(--line)}
+.tl-item{display:grid;grid-template-columns:9rem 1fr;gap:2.5rem;position:relative}
+.tl-date{text-align:right;font-size:.9rem;font-weight:600;color:var(--ink-soft);padding-top:1.35rem;line-height:1.35}
+.tl-date span{display:block;font-weight:400;font-size:.82rem}
+.tl-item::before{content:"";position:absolute;left:calc(10.25rem - 6px);top:1.55rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);z-index:1}
+.tl-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem}
+.tl-card h3{font-family:var(--display);font-size:1.25rem;font-weight:700;line-height:1.25}
+.tl-org{font-weight:600;color:var(--accent);margin-top:.2rem}
+.tl-meta{font-size:.88rem;color:var(--ink-soft);margin-top:.15rem}
+.tl-card ul{margin-top:1rem;padding-left:1.1rem;display:grid;gap:.55rem}
+.tl-card li{padding-left:.25rem;max-width:72ch}
+.tl-card li::marker{color:var(--accent)}
+
+.project{display:grid;grid-template-columns:1fr 1.35fr;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.project-visual{background:#14213D;color:#E7ECF4;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;min-height:300px}
+.project-visual .caption{font-size:.85rem;opacity:.75}
+.bars{display:flex;align-items:flex-end;gap:10px;height:150px}
+.bars div{flex:1;border-radius:5px 5px 0 0;background:#4FD1B0}
+.bars div.low{background:#F2B84B}
+.legend{display:flex;gap:1.1rem;font-size:.82rem;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:.4rem}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.project-body{padding:2rem}
+.project-body h3{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1.2}
+.project-body > ul:not(.tags){margin:1rem 0 1.25rem;padding-left:1.1rem;display:grid;gap:.55rem}
+.project-body li::marker{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:.9rem 0 0}
+.tags li{font-size:.82rem;font-weight:600;padding:.25rem .65rem;border-radius:999px;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+
+.edu{display:flex;gap:1.5rem;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
+.edu-icon{width:56px;height:56px;flex:none;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.edu-icon svg{width:28px;height:28px}
+.edu h3{font-family:var(--display);font-size:1.3rem;font-weight:700}
+.edu p{color:var(--ink-soft)}
+.lead-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.lead-list li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem;border-top:3px solid var(--accent)}
+.lead-list .when{font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.lead-list h3{font-family:var(--display);font-size:1.15rem;font-weight:700;margin-top:.35rem;line-height:1.3}
+.lead-list p{color:var(--ink-soft);margin-top:.2rem}
+
+.contact-box{background:#14213D;color:#E7ECF4;border-radius:22px;padding:clamp(2rem,5vw,3.5rem);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:center;border:1px solid var(--line)}
+.contact-box h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.5vw,3rem);line-height:1.05;letter-spacing:-.03em}
+.contact-box .intro{margin-top:1rem;opacity:.85;max-width:44ch}
+.contact-box .btn-primary{background:#4FD1B0;color:#0F1624;margin-top:1.75rem}
+.contact-list{list-style:none;display:grid;gap:.75rem}
+.contact-list a,.contact-list button{width:100%;display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:inherit;text-decoration:none;font:inherit;text-align:left;cursor:pointer;transition:background-color .2s,border-color .2s}
+.contact-list a:hover,.contact-list button:hover{border-color:#4FD1B0;background:rgba(255,255,255,.11)}
+.contact-list svg{width:22px;height:22px;flex:none;color:#4FD1B0}
+.contact-list small{display:block;font-size:.8rem;opacity:.7}
+.contact-list strong{font-weight:600;word-break:break-word}
+.copied{margin-left:auto;font-size:.8rem;font-weight:600;color:#4FD1B0;opacity:0;transition:opacity .2s}
+.copied.show{opacity:1}
+
+footer{padding:2.5rem 0 3rem;text-align:center;font-size:.9rem;color:var(--ink-soft)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn:hover{transform:none}
+}
+
+@media (max-width:960px){
+  .hero-grid,.about-grid,.contact-box,.project{grid-template-columns:1fr}
+  .project-visual{min-height:240px}
+  .skill-card.wide{grid-column:auto}
+}
+@media (max-width:860px){
+  .menu-btn{display:grid}
+  .nav-cta{display:none}
+  .nav-links{position:fixed;top:calc(var(--nav-h) + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1rem;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s}
+  .nav-links.open{opacity:1;transform:none;visibility:visible}
+  .nav-links a{padding:.8rem .5rem;border-radius:0;border-bottom:1px solid var(--line)}
+  .nav-links a.active{background:transparent;box-shadow:inset 3px 0 0 var(--accent);padding-left:.9rem}
+}
+@media (max-width:640px){
+  body{font-size:1rem}
+  .timeline::before{left:7px}
+  .tl-item{grid-template-columns:1fr;gap:.5rem;padding-left:2rem}
+  .tl-item::before{left:1px;top:.3rem}
+  .tl-date{text-align:left;padding-top:0}
+  .tl-date span{display:inline;margin-left:.4rem}
+  .edu{flex-direction:column}
+  .hero-actions .btn{flex:1 1 auto;justify-content:center}
+  .sheet-row{grid-template-columns:4.5rem 1fr}
+  .sheet-row b{font-size:1.6rem}
+}
 </style>
 </head>
 <body>
-<div class="om-bg"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="70" fill="none" stroke="#b975ff" stroke-width="1"/><circle cx="100" cy="100" r="95" fill="none" stroke="#8b3ff0" stroke-width="1"/></svg></div>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-<div id="welcome">
-  <div class="tila-orb"></div>
-  <h1>MRINAL'S FITNESS TRACKER</h1>
-  <p style="color:var(--neon);font-style:italic">Your 60-Day Fitness Journey with TILA</p>
-  <p style="max-width:420px">Hello Mrinal, Welcome to your fitness tracker!<br>Your fitness journey starts here. Let's build strength, consistency, and a healthier lifestyle together.</p>
-  <button class="glow-btn" id="startBtn">Start My Journey</button>
-  <div class="toggle-row">
-    <label style="font-size:13px;color:var(--dim)"><input type="checkbox" id="musicToggle" checked> Welcome music</label>
-    <button id="replayBtn" class="status-pill" style="display:none">Replay tune</button>
-  </div>
-</div>
-
-<div id="app" style="display:none">
-  <header class="top">
-    <div class="brand">MRINAL'S <span>FITNESS</span> TRACKER</div>
-    <div class="status-pill" id="todayPill"></div>
-  </header>
-  <nav class="tabs">
-    <button data-tab="home" class="active">Home</button>
-    <button data-tab="tracker">Daily Tracker</button>
-    <button data-tab="dashboard">Dashboard</button>
-    <button data-tab="history">History</button>
-    <button data-tab="settings">Settings</button>
-  </nav>
-  <main>
-    <section id="home" class="active">
-      <h2>Your Fitness Journey with TILA</h2>
-      <p id="homeMsg"></p>
-      <div class="grid" id="homeCards"></div>
-    </section>
-
-    <section id="tracker">
-      <div class="dateNav">
-        <button class="status-pill" id="prevDay">&larr; Prev</button>
-        <input type="date" id="dateInput" min="2026-09-28" max="2026-11-26">
-        <button class="status-pill" id="nextDay">Next &rarr;</button>
-        <button class="status-pill" id="todayBtn">Today</button>
-      </div>
-      <div class="card">
-        <div class="section-title">Morning &amp; Meals</div>
-        <div id="mealList"></div>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="section-title">Hydration</div>
-        <div class="glasses" id="glasses"></div>
-        <div class="progress"><i id="waterBar" style="width:0%"></i></div>
-        <p id="waterText"></p>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="section-title" id="workoutTitle">Gym &amp; Workout</div>
-        <div class="check-row"><input type="checkbox" id="workoutDone"><label id="workoutLabel">Workout completed</label></div>
-        <div class="field-row" id="workoutFields">
-          <div><label>Workout type</label><input id="wType"></div>
-          <div><label>Exercises</label><input id="wEx"></div>
-          <div><label>Sets x Reps</label><input id="wSets"></div>
-          <div><label>Duration (min)</label><input type="number" id="wDur"></div>
-        </div>
-        <textarea id="wNotes" placeholder="Notes on strength/energy" style="width:100%;margin-top:6px" rows="2"></textarea>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="section-title">Fruit &amp; Vegetable Tracker</div>
-        <div id="fvList" class="grid"></div>
-        <div style="margin-top:8px"><input id="customFood" placeholder="Add custom food + Enter"></div>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="section-title">Recovery &amp; Sleep</div>
-        <div id="recList"></div>
-        <div class="field-row">
-          <div><label>Sleep hours</label><input type="number" step="0.5" id="sleepHours"></div>
-          <div><label>Energy (1-5)</label><input type="number" min="1" max="5" id="energy"></div>
-          <div><label>Soreness (1-5)</label><input type="number" min="1" max="5" id="soreness"></div>
-          <div><label>Body weight (kg)</label><input type="number" step="0.1" id="weight"></div>
-        </div>
-        <textarea id="dayNotes" placeholder="Daily notes" style="width:100%;margin-top:6px" rows="2"></textarea>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <div class="section-title">Nutrition Numbers (for Dashboard)</div>
-        <div class="field-row">
-          <div><label>Protein intake today (g)</label><input type="number" id="proteinIn"></div>
-          <div><label>Calorie intake today</label><input type="number" id="calIn"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="dashboard">
-      <h2>Your Fitness Progress</h2>
-      <select id="rangeSel" class="status-pill">
-        <option value="today">Today</option><option value="yesterday">Yesterday</option>
-        <option value="7">Last 7 Days</option><option value="14">Last 14 Days</option>
-        <option value="30">Last 30 Days</option><option value="60" selected>Full 60 Days</option>
-      </select>
-      <div id="dashEmpty" class="empty" style="display:none">Your fitness journey is waiting to begin. Complete today's checklist to see your progress.</div>
-      <div id="dashBody">
-        <div class="grid" id="dashCards" style="margin:14px 0"></div>
-        <div class="card" style="margin-bottom:12px"><h3>Daily Habit Completion %</h3><canvas id="chartCompletion" height="160"></canvas></div>
-        <div class="card"><h3>Body Weight Trend (kg)</h3><canvas id="chartWeight" height="160"></canvas></div>
-      </div>
-    </section>
-
-    <section id="history">
-      <h2>History</h2>
-      <p>Pick any date from the 60-day plan to view or edit its saved entry.</p>
-      <input type="date" id="histDate" min="2026-09-28" max="2026-11-26">
-      <div class="card" id="histCard" style="margin-top:12px"></div>
-    </section>
-
-    <section id="settings">
-      <h2>Settings</h2>
-      <div class="card">
-        <div class="field-row">
-          <div><label>Daily protein target (g)</label><input type="number" id="setProtein"></div>
-          <div><label>Daily calorie target</label><input type="number" id="setCalorie"></div>
-          <div><label>Daily water target (L)</label><input type="number" step="0.1" id="setWater"></div>
-          <div><label>Glass size (ml)</label><input type="number" id="setGlassMl"></div>
-          <div><label>Number of glasses/day</label><input type="number" id="setGlassCount"></div>
-          <div><label>Target body weight (kg)</label><input type="number" id="setWeightGoal"></div>
-          <div><label>Daily sleep goal (hrs)</label><input type="number" step="0.5" id="setSleep"></div>
-        </div>
-        <p style="font-size:12px">Workout schedule: 8:00 PM, Mon–Fri &middot; Breakfast 9:00 AM &middot; Lunch 2:00 PM. Defaults are not medical advice — adjust freely.</p>
-        <label style="display:block;margin:6px 0"><input type="checkbox" id="setMusic" checked> Welcome music on/off</label>
-        <label style="display:block;margin:6px 0"><input type="checkbox" id="setVoice" checked> TILA voice on/off</label>
-        <button class="glow-btn" id="saveSettings">Save changes</button>
-        <span id="saveMsg" style="color:var(--ok);margin-left:10px;font-size:13px"></span>
-      </div>
-      <div class="card" style="margin-top:12px">
-        <h3>Data &amp; Backup</h3>
-        <p>Data is saved to this browser's local storage only — it stays on this device/browser and is not synced elsewhere.</p>
-        <button class="status-pill" id="exportCsv">Export CSV</button>
-        <button class="status-pill" id="backupJson">Backup (JSON)</button>
-        <label class="status-pill" style="display:inline-block">Restore <input type="file" id="restoreFile" style="display:none"></label>
-      </div>
-    </section>
-  </main>
-  <footer class="note">kya haal hai laude &middot; local-storage single-device version</footer>
-</div>
-
-<div id="tila-fab">
-  <div id="tila-panel">
-    <div style="padding:8px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-      <b>TILA</b><span class="status-pill" id="tilaStatus">Ready</span>
-    </div>
-    <div id="tila-log"></div>
-    <div class="tila-input-row">
-      <input id="tilaText" placeholder="Ask TILA...">
-      <button id="tilaMic" class="status-pill">🎤</button>
-      <button id="tilaSend" class="status-pill">Send</button>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand" aria-label="Shikha Shetty, back to top">Shikha<span>.</span></a>
+    <nav aria-label="Main">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary nav-cta">Hire me</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch colour theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
   </div>
-  <div class="orb" id="tilaOrb">🤖</div>
-</div>
+</header>
 
-</div>
+<main id="main">
+
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <p class="status"><i aria-hidden="true"></i>Open to Business Analyst roles in Bangalore</p>
+        <h1>Shikha Shetty</h1>
+        <p class="role">Data Analyst | Business Analytics</p>
+        <p class="tagline">I turn finance and operations data into reports and dashboards that teams actually act on.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="resume.pdf" class="btn btn-outline" download="Shikha_Shetty_Resume.pdf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+            Download Resume
+          </a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+
+      <aside class="sheet reveal" aria-label="Highlights from my work">
+        <div class="sheet-head"><strong>Impact at a glance</strong><span>2025–2026</span></div>
+        <div class="sheet-row"><b><em>70%</em></b><p><small>Flipkart</small>less manual reporting effort after automating coupon-burn tracking and overburn alerts</p></div>
+        <div class="sheet-row"><b><em>11</em></b><p><small>Flipkart</small>supercategories covered in one end-to-end Power BI spend dashboard</p></div>
+        <div class="sheet-row"><b><em>160+</em></b><p><small>Convin.ai</small>client reports analysed for KPI, SLA, trend and root-cause issues</p></div>
+        <div class="sheet-row"><b><em>4.5/5</em></b><p><small>Convin.ai</small>overall report score for my Power BI reports and SQL analysis</p></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>About me</h2></div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a data analyst based in Bangalore with hands-on experience in SQL, Power BI, Tableau and Excel across business finance, customer analytics and process improvement.</p>
+          <p>At Flipkart, I worked with the Business Finance (BGM) team on P&amp;L and coupon-burn reporting, automating tracking that used to be done by hand and building a Power BI dashboard the business could use on its own. Before that, at Convin.ai, I analysed client reports and conversation data to find recurring operational issues and turn them into recommendations.</p>
+          <p>My work sits between data and the people who need it: collecting and validating data, building standardised and ad-hoc reports, and training non-technical stakeholders on data tools. I'm now looking for a Business Analyst role where I can work closely with business teams on the questions behind the numbers.</p>
+        </div>
+        <dl class="facts reveal">
+          <div><dt>Based in</dt><dd>Bangalore, India</dd></div>
+          <div><dt>Core tools</dt><dd>SQL, Power BI, Tableau, Excel, Python</dd></div>
+          <div><dt>Domains</dt><dd>Business finance, operations, customer analytics</dd></div>
+          <div><dt>Languages</dt><dd>English, Tulu, Hindi, Kannada</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Skills</h2></div>
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>BI &amp; Visualization</h3>
+          <ul class="chips"><li>Power BI</li><li>Tableau</li><li>Excel PivotTables</li><li>VLOOKUP</li><li>INDEX-MATCH</li><li>Slicers</li><li>Dashboards</li><li>Data Storytelling</li></ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Languages &amp; Data</h3>
+          <ul class="chips"><li>SQL (Advanced)</li><li>Python</li><li>Pandas</li><li>NumPy</li><li>ETL Pipelines</li><li>Data Platforms</li></ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20c3-1 4-14 9-14s6 13 9 14"/><path d="M3 20h18"/></svg>Statistics</h3>
+          <ul class="chips"><li>Sampling</li><li>Distributions</li><li>Central Tendency</li><li>Hypothesis Testing</li><li>Variance &amp; Trend Analysis</li></ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>Tools</h3>
+          <ul class="chips"><li>Jupyter Notebook</li><li>Git</li><li>GitHub</li><li>CRM Tools</li></ul>
+        </article>
+        <article class="skill-card wide reveal">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Business &amp; Domain</h3>
+          <ul class="chips"><li>Business Finance</li><li>Business Operations</li><li>Cross-functional Collaboration</li><li>Stakeholder Training &amp; Support</li></ul>
+          <h4>Reporting and data governance</h4>
+          <ul class="chips"><li>Data Validation</li><li>Data Quality</li><li>Compliance &amp; Governance</li><li>Standardized &amp; Ad-hoc Reporting</li><li>Reporting Automation</li></ul>
+          <h4>How I work</h4>
+          <ul class="chips"><li>Analytical Thinking</li><li>Critical Problem Solving</li><li>Effective Communication</li><li>Result-Oriented Mindset</li><li>Collaboration</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Experience</h2></div>
+      <ol class="timeline">
+        <li class="tl-item reveal">
+          <p class="tl-date">Feb 2026 – Jul 2026<span>Full-time contract</span></p>
+          <div class="tl-card">
+            <h3>Data Analyst, Business Finance (BGM)</h3>
+            <p class="tl-org">Flipkart</p>
+            <p class="tl-meta">Bangalore, Karnataka | Third-party contract</p>
+            <ul>
+              <li>Developed SQL queries for P&amp;L and coupon-burn reporting, enabling accurate, recurring performance tracking and stakeholder-ready reports.</li>
+              <li>Automated Excel-based coupon-burn tracking and overburn alerts, <mark>reducing manual reporting effort by 70%</mark> and improving data validation turnaround.</li>
+              <li>Built an end-to-end Power BI dashboard covering <mark>11 supercategories</mark>, enabling spend monitoring and self-serve reporting across supercategory, CMS vertical and business levels.</li>
+              <li>Monitored spend and burn trends to identify overburn exceptions and performance deviations, translating findings into actionable insights for timely stakeholder action.</li>
+              <li>Collaborated with finance and business teams to align data requirements, keep reporting consistent and support process-improvement initiatives.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <p class="tl-date">Jul 2025 – Jan 2026<span>Internship</span></p>
+          <div class="tl-card">
+            <h3>Data Labs Intern (Analyst)</h3>
+            <p class="tl-org">Convin.ai</p>
+            <p class="tl-meta">Bangalore, Karnataka</p>
+            <ul>
+              <li>Analyzed <mark>160+ client reports</mark>, performing KPI, SLA, trend, variance and root-cause analysis to identify recurring operational issues.</li>
+              <li>Analyzed conversation data to identify performance gaps, customer issues and escalations, translating findings into actionable recommendations for stakeholders.</li>
+              <li>Built Power BI reports and SQL queries for performance monitoring, achieving a <mark>4.5/5 overall report score</mark> through accurate, validated insights.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <p class="tl-date">Apr 2025 – Jun 2025<span>Internship</span></p>
+          <div class="tl-card">
+            <h3>Data Analyst Trainee</h3>
+            <p class="tl-org">GeeksforGeeks</p>
+            <p class="tl-meta">Bangalore, Karnataka</p>
+            <ul>
+              <li>Built data pipelines using Python and MySQL for data cleansing, validation and transformation, <mark>improving dataset quality by 20%</mark>; designed Power BI dashboards for standardized reporting (<mark>+15% retention</mark>).</li>
+              <li>Performed exploratory data analysis to identify churn drivers and ran ad-hoc analysis on engagement data, <mark>improving course completion rate by 15%</mark>.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="tl-item reveal">
+          <p class="tl-date">Jun 2023 – Mar 2024<span>Internship and training</span></p>
+          <div class="tl-card">
+            <h3>Big Data Analytics Trainee &amp; Freelancer</h3>
+            <p class="tl-org">Capgemini – ICT Academy</p>
+            <p class="tl-meta">Mysuru, Karnataka</p>
+            <ul>
+              <li>Performed operational analytics on large datasets to identify trends, gaps and process-improvement opportunities, including analysis of Amazon seller data for weekly ad campaigns.</li>
+              <li>Cleaned and validated datasets using SQL, Python and Excel to ensure reliable, compliant analysis.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Projects</h2></div>
+      <article class="project reveal">
+        <div class="project-visual" aria-hidden="true">
+          <p class="caption">Revenue vs margin by category</p>
+          <div class="bars">
+            <div style="height:70%"></div><div class="low" style="height:95%"></div><div style="height:55%"></div><div style="height:80%"></div><div class="low" style="height:88%"></div><div style="height:45%"></div><div style="height:62%"></div>
+          </div>
+          <div class="legend"><span><i style="background:#4FD1B0"></i>Healthy margin</span><span><i style="background:#F2B84B"></i>High revenue, low margin</span></div>
+        </div>
+        <div class="project-body">
+          <h3>E-commerce Sales &amp; Profitability Dashboard</h3>
+          <ul class="tags" aria-label="Tools used"><li>Excel</li><li>SQL</li><li>Python</li><li>Power BI</li><li>DAX</li></ul>
+          <ul>
+            <li>Built an end-to-end e-commerce dashboard analysing revenue, cost, discounts, gross profit, margin and YoY growth on a star-schema data model for scalable analytics.</li>
+            <li>Developed advanced DAX measures using CALCULATE, FILTER, DIVIDE, ALL and time-intelligence functions for MoM and YoY trend analysis.</li>
+            <li>Identified high-revenue, low-margin categories driven by aggressive discounting and elevated return rates, informing pricing strategy.</li>
+          </ul>
+          <a href="https://github.com/" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Education</h2></div>
+      <div class="edu reveal">
+        <div class="edu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg></div>
+        <div>
+          <h3>B.E. in Electronics and Communication</h3>
+          <p>NIE Institute of Technology, Mysuru, Karnataka</p>
+          <p>2020 – 2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Leadership</h2></div>
+      <ul class="lead-list">
+        <li class="reveal"><p class="when">Jul 2023 – Jul 2024</p><h3>President</h3><p>Inner Wheel Club NIEIT</p></li>
+        <li class="reveal"><p class="when">2022</p><h3>English Teaching Volunteer</h3><p>U&amp;I</p></li>
+        <li class="reveal"><p class="when">2020 – 2021</p><h3>First-year Class Representative</h3><p>ECE, NIE Institute of Technology</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div>
+          <h2>Hiring for a Business Analyst or Data Analyst role?</h2>
+          <p class="intro">I'd love to hear about it. Email is the quickest way to reach me, or call me directly.</p>
+          <a class="btn btn-primary" href="mailto:shikhajshetty@gmail.com?subject=Opportunity%20for%20Shikha%20Shetty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            Email me
+          </a>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <button type="button" id="copyEmail" aria-label="Copy email address shikhajshetty@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              <span><small>Email (click to copy)</small><strong>shikhajshetty@gmail.com</strong></span>
+              <span class="copied" id="copiedMsg" aria-live="polite"></span>
+            </button>
+          </li>
+          <li>
+            <a href="tel:+918197944487">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span><small>Phone</small><strong>+91 81979 44487</strong></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/shikhashetty06" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+              <span><small>LinkedIn</small><strong>linkedin.com/in/shikhashetty06</strong></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.hackerrank.com/shikhashetty6" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 21 7v10l-9 5-9-5V7l9-5z"/><path d="M9 8v8M15 8v8M9 12h6"/></svg>
+              <span><small>HackerRank</small><strong>hackerrank.com/shikhashetty6</strong></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Shikha Shetty</div>
+</footer>
+
 <script>
-const DSTART=new Date(2026,8,28), DEND=new Date(2026,10,26);
-const fmt=d=>d.toISOString().slice(0,10);
-const todayClamped=()=>{const t=new Date();return t<DSTART?DSTART:(t>DEND?DEND:t)};
-let curDate=fmt(todayClamped());
-
-const MEALS=[["morningWater","Drink a glass of water after waking up"],["nuts","Soaked almonds, cashews, pistachios, dates"],
-["breakfast","Eat breakfast at 9:00 AM"],["breakfastProtein","Include eggs or protein-rich food"],["morningFruit","Morning fruit serving"],
-["lunch","Eat lunch at 2:00 PM"],["lunchGrain","Rice or roti"],["lunchProtein","Dal or protein-rich veg food"],["lunchVeg","Vegetables"],["lunchCurd","Curd or dairy serving"],
-["snack","Healthy evening snack"],["snackShake","Protein shake / smoothie"],["snackFruit","Fruit serving (if not done)"],
-["dinner","Dinner with protein-rich food"],["dinnerNonVeg","Chicken on planned non-veg days"],["dinnerVeg","Vegetables at dinner"],["dinnerTime","Dinner at suitable time around workout"],
-["proteinTarget","Met daily protein target"],["calorieTarget","Met daily calorie target"],["fruitVegTarget","Ate planned fruit & veg amount"],["whey","Whey protein (if planned)"],["creatine","Creatine (if planned)"]];
-const FV=[["banana","Banana"],["apple","Apple"],["papaya","Papaya"],["orange","Orange"],["amla","Amla"],["seasonal","Seasonal fruit"],
-["beetroot","Beetroot"],["carrot","Carrot"],["cucumber","Cucumber"],["spinach","Spinach"],["broccoli","Broccoli"],["otherveg","Other seasonal veg"]];
-const REC=[["sleepRoutine","Completed my planned sleep routine"],["sufficientSleep","Got sufficient sleep"],
-["stretching","Completed stretching or mobility exercises"],["recoveryRoutine","Followed my recovery routine"],["noJunk","Avoided unnecessary junk food"]];
-
-function defaultSettings(){return{protein:120,calorie:2200,water:2,glassMl:250,glassCount:8,weightGoal:72,sleep:7,music:true,voice:true}}
-let settings=JSON.parse(localStorage.getItem('mft_settings')||'null')||defaultSettings();
-
-/* ---------- Cloud database layer (falls back to local-only if unavailable) ---------- */
-let db=null, dbReady=false, daysCache={};
-async function initDb(){
-  try{ db = await window.claude.use('db'); }catch(e){ db=null; }
-  if(!db){ setSyncPill(false); return; }
-  dbReady=true; setSyncPill(true);
-  try{
-    const setSnap = await db.doc('settings/main').get();
-    if(setSnap.exists) settings=Object.assign(defaultSettings(),setSnap.data());
-  }catch(e){}
-  db.collection('days').onSnapshot(snap=>{
-    snap.docs.forEach(d=>{daysCache[d.id]=d.data(); localStorage.setItem('mft_'+d.id,JSON.stringify(d.data()));});
-    refreshCurrentView();
-  }, e=>{ dbReady=false; setSyncPill(false); });
-}
-function setSyncPill(on){
-  const el=document.getElementById('todayPill');
-  if(el) el.dataset.sync = on?'Cloud synced':'Local only (this browser)';
-}
-function refreshCurrentView(){
-  renderHome();
-  if(document.getElementById('tracker').classList.contains('active')) renderTracker();
-  if(document.getElementById('dashboard').classList.contains('active')) renderDashboard();
-}
-
-function loadDay(d){
-  if(daysCache[d])return daysCache[d];
-  const raw=localStorage.getItem('mft_'+d);
-  if(raw)return JSON.parse(raw);
-  const day=new Date(d).getDay(); // 0 Sun..6 Sat
-  const isWeekday=day>=1&&day<=5;
-  const meals={},fv={},rec={};
-  MEALS.forEach(([k])=>meals[k]=false);
-  FV.forEach(([k])=>fv[k]=false);
-  REC.forEach(([k])=>rec[k]=false);
-  return {meals,fv,customFoods:[],water:Array(8).fill(false),
-    workout:{applicable:isWeekday,done:false,type:'',exercises:'',sets:'',dur:'',notes:''},
-    rec,sleepHours:'',energy:'',soreness:'',weight:'',dayNotes:'',protein:'',calories:''};
-}
-function saveDay(d,data){
-  daysCache[d]=data;
-  localStorage.setItem('mft_'+d,JSON.stringify(data));
-  if(dbReady){ db.doc('days/'+d).set(data).catch(()=>{ dbReady=false; setSyncPill(false); }); }
-}
-function saveSettingsToStore(){
-  localStorage.setItem('mft_settings',JSON.stringify(settings));
-  if(dbReady){ db.doc('settings/main').set(settings).catch(()=>{}); }
-}
-let day=loadDay(curDate);
-
-function allDates(){const arr=[];let d=new Date(DSTART);while(d<=DEND){arr.push(fmt(d));d.setDate(d.getDate()+1)}return arr}
-function hasDayData(d){return !!(daysCache[d]||localStorage.getItem('mft_'+d));}
-function completionPct(data){
-  let total=MEALS.length+data.water.length+FV.length+REC.length+(data.workout.applicable?1:0);
-  let done=MEALS.filter(([k])=>data.meals[k]).length+data.water.filter(Boolean).length+
-    FV.filter(([k])=>data.fv[k]).length+REC.filter(([k])=>data.rec[k]).length+(data.workout.applicable&&data.workout.done?1:0);
-  return total?Math.round(done/total*100):0;
-}
-
-/* ---------- Welcome / tune ---------- */
-let audioCtx;
-function playTune(){
-  if(!settings.music)return;
-  audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
-  const notes=[523,659,784,1046]; let t=audioCtx.currentTime;
-  notes.forEach((f,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-    o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(audioCtx.destination);
-    g.gain.setValueAtTime(0.001,t+i*0.18);g.gain.exponentialRampToValueAtTime(0.15,t+i*0.18+0.03);
-    g.gain.exponentialRampToValueAtTime(0.001,t+i*0.18+0.17);o.start(t+i*0.18);o.stop(t+i*0.18+0.18);});
-}
-document.getElementById('musicToggle').checked=settings.music;
-document.getElementById('musicToggle').onchange=e=>{settings.music=e.target.checked;saveSettingsToStore();};
-document.getElementById('startBtn').onclick=()=>{
-  playTune();
-  document.getElementById('replayBtn').style.display='inline-block';
-  document.getElementById('welcome').style.display='none';
-  document.getElementById('app').style.display='block';
-  localStorage.setItem('mft_seen','1');
-  initApp();
-};
-document.getElementById('replayBtn').onclick=playTune;
-if(localStorage.getItem('mft_seen')){document.getElementById('welcome').style.display='none';document.getElementById('app').style.display='block';}
-
-/* ---------- Tabs ---------- */
-document.querySelectorAll('nav.tabs button').forEach(btn=>btn.onclick=()=>{
-  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(btn.dataset.tab).classList.add('active');
-  if(btn.dataset.tab==='dashboard')renderDashboard();
-  if(btn.dataset.tab==='home')renderHome();
-});
-
-/* ---------- Render Tracker ---------- */
-function renderChecklist(container,items,dataObj,onchange){
-  container.innerHTML='';
-  items.forEach(([k,label])=>{
-    const row=document.createElement('div');row.className='check-row';
-    row.innerHTML=`<input type="checkbox" id="c_${k}"><label for="c_${k}">${label}</label>`;
-    const cb=row.querySelector('input');cb.checked=!!dataObj[k];
-    cb.onchange=()=>{dataObj[k]=cb.checked;onchange()};
-    container.appendChild(row);
-  });
-}
-function persist(){saveDay(curDate,day);renderHome();}
-function renderGlasses(){
-  const g=document.getElementById('glasses');g.innerHTML='';
-  const n=settings.glassCount||8;
-  if(day.water.length!==n){const old=day.water;day.water=Array(n).fill(false).map((_,i)=>old[i]||false)}
-  day.water.forEach((filled,i)=>{
-    const el=document.createElement('div');el.className='glass'+(filled?' filled':'');el.textContent='G'+(i+1);
-    el.onclick=()=>{day.water[i]=!day.water[i];persist();renderGlasses();};
-    g.appendChild(el);
-  });
-  const totalL=(day.water.filter(Boolean).length*(settings.glassMl||250)/1000).toFixed(2);
-  const goal=settings.water||2;
-  document.getElementById('waterBar').style.width=Math.min(100,totalL/goal*100)+'%';
-  document.getElementById('waterText').textContent=`${totalL} L of ${goal} L target`;
-}
-function renderTracker(){
-  document.getElementById('dateInput').value=curDate;
-  const d=new Date(curDate);const wd=d.getDay();const isWeekday=wd>=1&&wd<=5;
-  day=loadDay(curDate);
-  renderChecklist(document.getElementById('mealList'),MEALS,day.meals,persist);
-  renderGlasses();
-  document.getElementById('workoutTitle').textContent=isWeekday?'Gym & Workout (scheduled 8:00 PM)':'Rest / Recovery Day';
-  document.getElementById('workoutLabel').textContent=isWeekday?'Workout completed':'Rest or optional activity completed';
-  document.getElementById('workoutFields').style.display=isWeekday?'grid':'none';
-  const wd2=document.getElementById('workoutDone');wd2.checked=day.workout.done;
-  wd2.onchange=()=>{day.workout.done=wd2.checked;persist();if(wd2.checked&&isWeekday)tilaSay("Great job, Mrinal! Another step toward your fitness goal.")};
-  ['wType','wEx','wSets','wDur','wNotes'].forEach((id,i)=>{
-    const key=['type','exercises','sets','dur','notes'][i];
-    const el=document.getElementById(id);el.value=day.workout[key]||'';
-    el.oninput=()=>{day.workout[key]=el.value;persist();};
-  });
-  const fvContainer=document.getElementById('fvList');fvContainer.innerHTML='';
-  renderChecklist(fvContainer,FV,day.fv,persist);
-  (day.customFoods||[]).forEach((f,idx)=>{
-    const row=document.createElement('div');row.className='check-row';
-    row.innerHTML=`<input type="checkbox" ${f.done?'checked':''}><label>${f.name}</label>`;
-    row.querySelector('input').onchange=e=>{day.customFoods[idx].done=e.target.checked;persist();};
-    fvContainer.appendChild(row);
-  });
-  document.getElementById('customFood').onkeydown=e=>{
-    if(e.key==='Enter'&&e.target.value.trim()){day.customFoods=day.customFoods||[];day.customFoods.push({name:e.target.value.trim(),done:false});e.target.value='';persist();renderTracker();}
-  };
-  renderChecklist(document.getElementById('recList'),REC,day.rec,persist);
-  ['sleepHours','energy','soreness','weight','dayNotes','proteinIn','calIn'].forEach(id=>{
-    const map={sleepHours:'sleepHours',energy:'energy',soreness:'soreness',weight:'weight',dayNotes:'dayNotes',proteinIn:'protein',calIn:'calories'};
-    const key=map[id];const el=document.getElementById(id);el.value=day[key]||'';
-    el.oninput=()=>{day[key]=el.value;persist();};
-  });
-}
-document.getElementById('dateInput').onchange=e=>{curDate=e.target.value;renderTracker();};
-document.getElementById('prevDay').onclick=()=>{const d=new Date(curDate);d.setDate(d.getDate()-1);if(d>=DSTART){curDate=fmt(d);renderTracker();}};
-document.getElementById('nextDay').onclick=()=>{const d=new Date(curDate);d.setDate(d.getDate()+1);if(d<=DEND){curDate=fmt(d);renderTracker();}};
-document.getElementById('todayBtn').onclick=()=>{curDate=fmt(todayClamped());renderTracker();};
-
-/* ---------- Home ---------- */
-function renderHome(){
-  document.getElementById('todayPill').textContent=new Date(curDate).toDateString()+' · '+(document.getElementById('todayPill').dataset.sync||'Connecting…');
-  const d=loadDay(fmt(todayClamped()));
-  const pct=completionPct(d);
-  document.getElementById('homeMsg').textContent=pct===0?"Your fitness journey is waiting to begin. Complete today's checklist to see your progress.":`Today's completion: ${pct}%. Keep going, Boss!`;
-  const waterL=(d.water.filter(Boolean).length*(settings.glassMl||250)/1000).toFixed(2);
-  const cards=[["Completion",pct+"%"],["Water",waterL+" L"],["Workout",d.workout.applicable?(d.workout.done?"Done":"Pending"):"Rest day"],
-    ["Protein",(d.protein||0)+" g"],["Calories",d.calories||0],["Sleep",(d.sleepHours||0)+" hrs"],["Weight",(d.weight||'—')+" kg"]];
-  document.getElementById('homeCards').innerHTML=cards.map(([l,v])=>`<div class="card metric"><b>${v}</b><span>${l}</span></div>`).join('');
-}
-
-/* ---------- History ---------- */
-document.getElementById('histDate').value=curDate;
-document.getElementById('histDate').onchange=e=>{
-  const d=loadDay(e.target.value);const pct=completionPct(d);
-  document.getElementById('histCard').innerHTML=`<b>${e.target.value}</b><p>Completion: ${pct}% &middot; Water: ${d.water.filter(Boolean).length}/${d.water.length} glasses &middot; Workout: ${d.workout.done?'Done':'Not done'} &middot; Weight: ${d.weight||'—'} kg &middot; Protein: ${d.protein||'—'} g</p><button class="status-pill" onclick="curDate='${e.target.value}';document.querySelector('[data-tab=tracker]').click();">Edit this day</button>`;
-};
-
-/* ---------- Dashboard ---------- */
-let chartC,chartW;
-function rangeDates(sel){
-  const all=allDates();const idxToday=all.indexOf(fmt(todayClamped()));
-  if(sel==='today')return[all[idxToday]];
-  if(sel==='yesterday')return[all[Math.max(0,idxToday-1)]];
-  const n=parseInt(sel);const start=Math.max(0,idxToday-n+1);
-  return all.slice(start,idxToday+1);
-}
-function renderDashboard(){
-  const sel=document.getElementById('rangeSel').value;
-  const dates=rangeDates(sel);
-  const data=dates.map(d=>({d,rec:loadDay(d)}));
-  const hasAny=allDates().some(d=>localStorage.getItem('mft_'+d));
-  document.getElementById('dashEmpty').style.display=hasAny?'none':'block';
-  document.getElementById('dashBody').style.display=hasAny?'block':'none';
-  if(!hasAny)return;
-  const trackedDays=data.filter(x=>localStorage.getItem('mft_'+x.d));
-  const workouts=data.reduce((s,x)=>s+((x.rec.workout.applicable&&x.rec.workout.done)?1:0),0);
-  const avgPct=Math.round(data.reduce((s,x)=>s+completionPct(x.rec),0)/(data.length||1));
-  const avgProt=Math.round(data.reduce((s,x)=>s+(+x.rec.protein||0),0)/(data.length||1));
-  const avgWater=(data.reduce((s,x)=>s+x.rec.water.filter(Boolean).length*(settings.glassMl/1000),0)/(data.length||1)).toFixed(2);
-  const weights=data.filter(x=>x.rec.weight).map(x=>+x.rec.weight);
-  const weightChange=weights.length>1?(weights[weights.length-1]-weights[0]).toFixed(1):'—';
-  document.getElementById('dashCards').innerHTML=[
-    ["Days Tracked",trackedDays.length],["Workouts Completed",workouts],["Avg Completion",avgPct+"%"],
-    ["Avg Protein",avgProt+" g"],["Avg Water",avgWater+" L"],["Weight Change",weightChange+" kg"]
-  ].map(([l,v])=>`<div class="card metric"><b>${v}</b><span>${l}</span></div>`).join('');
-  const labels=data.map(x=>x.d.slice(5));
-  const pctData=data.map(x=>completionPct(x.rec));
-  const weightData=data.map(x=>x.rec.weight?+x.rec.weight:null);
-  if(window.Chart){
-    chartC&&chartC.destroy();chartW&&chartW.destroy();
-    chartC=new Chart(document.getElementById('chartCompletion'),{type:'bar',data:{labels,datasets:[{label:'Completion %',data:pctData,backgroundColor:'#b975ff'}]},
-      options:{scales:{y:{beginAtZero:true,max:100,ticks:{color:'#a893c4'}},x:{ticks:{color:'#a893c4'}}},plugins:{legend:{labels:{color:'#f4eeff'}}}}});
-    chartW=new Chart(document.getElementById('chartWeight'),{type:'line',data:{labels,datasets:[{label:'Weight (kg)',data:weightData,borderColor:'#8b3ff0',backgroundColor:'#8b3ff055',spanGaps:true,tension:.3}]},
-      options:{scales:{y:{ticks:{color:'#a893c4'}},x:{ticks:{color:'#a893c4'}}},plugins:{legend:{labels:{color:'#f4eeff'}}}}});
+(function(){
+  var root=document.documentElement;
+  var themeBtn=document.getElementById('themeToggle');
+  function currentTheme(){
+    var t=root.getAttribute('data-theme');
+    if(t)return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   }
-}
-document.getElementById('rangeSel').onchange=renderDashboard;
+  themeBtn.addEventListener('click',function(){
+    var next=currentTheme()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
 
-/* ---------- Settings ---------- */
-function loadSettingsUI(){
-  document.getElementById('setProtein').value=settings.protein;
-  document.getElementById('setCalorie').value=settings.calorie;
-  document.getElementById('setWater').value=settings.water;
-  document.getElementById('setGlassMl').value=settings.glassMl;
-  document.getElementById('setGlassCount').value=settings.glassCount;
-  document.getElementById('setWeightGoal').value=settings.weightGoal;
-  document.getElementById('setSleep').value=settings.sleep;
-  document.getElementById('setMusic').checked=settings.music;
-  document.getElementById('setVoice').checked=settings.voice;
-}
-document.getElementById('saveSettings').onclick=()=>{
-  settings={protein:+document.getElementById('setProtein').value||120,calorie:+document.getElementById('setCalorie').value||2200,
-    water:+document.getElementById('setWater').value||2,glassMl:+document.getElementById('setGlassMl').value||250,
-    glassCount:+document.getElementById('setGlassCount').value||8,weightGoal:+document.getElementById('setWeightGoal').value||72,
-    sleep:+document.getElementById('setSleep').value||7,music:document.getElementById('setMusic').checked,voice:document.getElementById('setVoice').checked};
-  saveSettingsToStore();
-  document.getElementById('saveMsg').textContent='Saved!';setTimeout(()=>document.getElementById('saveMsg').textContent='',1500);
-  renderTracker();renderHome();
-};
-document.getElementById('exportCsv').onclick=()=>{
-  let csv='date,completion%,water_glasses,workout_done,protein,calories,sleep_hours,weight\n';
-  allDates().forEach(d=>{const r=loadDay(d);if(!localStorage.getItem('mft_'+d)&&!daysCache[d])return;
-    csv+=`${d},${completionPct(r)},${r.water.filter(Boolean).length},${r.workout.done},${r.protein||''},${r.calories||''},${r.sleepHours||''},${r.weight||''}\n`;});
-  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mrinal_fitness_export.csv';a.click();
-};
-document.getElementById('backupJson').onclick=()=>{
-  const obj={};allDates().forEach(d=>{if(localStorage.getItem('mft_'+d)||daysCache[d])obj[d]=loadDay(d);});obj.settings=settings;
-  const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mrinal_fitness_backup.json';a.click();
-};
-document.getElementById('restoreFile').onchange=e=>{
-  const f=e.target.files[0];if(!f)return;const reader=new FileReader();
-  reader.onload=()=>{try{const obj=JSON.parse(reader.result);Object.keys(obj).forEach(k=>{if(k==='settings'){settings=obj[k];saveSettingsToStore();}else{saveDay(k,obj[k]);}});renderTracker();renderHome();loadSettingsUI();alert('Restored, and synced to the cloud if connected!');}catch(err){alert('Invalid backup file.');}};
-  reader.readAsText(f);
-};
+  var menuBtn=document.getElementById('menuToggle');
+  var links=document.getElementById('navLinks');
+  function closeMenu(){
+    links.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-label','Open menu');
+  }
+  menuBtn.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 
-/* ---------- TILA ---------- */
-const tila={pending:null};
-const FOOD_SUGGESTIONS={
-  paneer:[{emo:'🧀',name:'Paneer Bhurji + Roti',det:'100g scrambled paneer, light spices, 1-2 rotis — quick protein + carbs to refuel.'},
-    {emo:'🧀',name:'Grilled Paneer Tikka',det:'100g grilled paneer cubes — high protein, lighter than fried versions.'},
-    {emo:'🧀',name:'Palak Paneer + Rice (small)',det:'Paneer in spinach gravy with rice — protein + iron, easy comfort meal.'}],
-  chicken:[{emo:'🍗',name:'Grilled Chicken + Rice',det:'100g grilled chicken with 1 cup rice — classic post-workout combo.'},
-    {emo:'🍗',name:'Chicken Curry (light) + Roti',det:'100g chicken curry, less oil, with 1-2 rotis.'}],
-  egg:[{emo:'🥚',name:'Egg Bhurji + Toast',det:'2 eggs scrambled with veggies, 2 slices toast.'},
-    {emo:'🥚',name:'Boiled Eggs + Banana',det:'2 boiled eggs + 1 banana — fast, no cooking needed.'}],
-  banana:[{emo:'🍌',name:'Banana + Peanut Butter Toast',det:'1 banana with 2 slices PB toast — quick carbs + fat.'}],
-  whey:[{emo:'🥤',name:'Whey Protein Shake',det:'1 scoop whey + milk/water — fast-absorbing protein if tolerated.'}],
-  curd:[{emo:'🥣',name:'Curd + Fruit Bowl',det:'1/2 cup curd with chopped fruit, if tolerated.'}],
-  dal:[{emo:'🍲',name:'Dal + Rice',det:'1 cup dal with 1 cup rice — solid vegetarian protein + carbs.'}]
-};
-function foodCardsHtml(list){
-  return '<div class="food-cards">'+list.map(f=>`<div class="food-card"><span class="emo">${f.emo}</span><span class="name">${f.name}</span><span class="det">${f.det}</span></div>`).join('')+'</div>';
-}
-const tilaOrb=document.getElementById('tilaOrb'),tilaPanel=document.getElementById('tila-panel');
-tilaOrb.onclick=()=>tilaPanel.classList.toggle('open');
-function tilaLog(who,text,extraHtml){const log=document.getElementById('tila-log');const el=document.createElement('div');el.className=who;el.textContent=text;log.appendChild(el);
-  if(extraHtml){const wrap=document.createElement('div');wrap.innerHTML=extraHtml;log.appendChild(wrap);}
-  log.scrollTop=log.scrollHeight;}
-function tilaStatus(s){document.getElementById('tilaStatus').textContent=s;}
-function tilaSay(text,extraHtml){
-  tilaLog('bot',text,extraHtml);tilaPanel.classList.add('open');tilaStatus('Responding');
-  if(settings.voice&&window.speechSynthesis){const u=new SpeechSynthesisUtterance(text);speechSynthesis.speak(u);}
-  setTimeout(()=>tilaStatus('Ready'),900);
-}
-function confirmAction(msg,onYes){
-  const box=document.createElement('div');box.className='confirmBox';
-  box.innerHTML=`<div class="card"><p>${msg}</p><div class="row"><button class="glow-btn" id="yesBtn">Yes</button><button class="status-pill" id="noBtn">Cancel</button></div></div>`;
-  document.body.appendChild(box);
-  box.querySelector('#yesBtn').onclick=()=>{onYes();box.remove();};
-  box.querySelector('#noBtn').onclick=()=>box.remove();
-}
-function reportFor(d){
-  const raw=localStorage.getItem('mft_'+d);
-  if(!raw)return null;
-  const r=JSON.parse(raw);
-  return `Completion ${completionPct(r)}%, water ${r.water.filter(Boolean).length}/${r.water.length} glasses, workout ${r.workout.applicable?(r.workout.done?'done':'not done'):'rest day'}, protein ${r.protein||0} g, calories ${r.calories||0}, sleep ${r.sleepHours||0} hrs, weight ${r.weight||'not logged'} kg.`;
-}
-function handleCommand(text){
-  const t=text.toLowerCase();
-  tilaLog('me',text);tilaStatus('Processing');
-  const todayStr=fmt(todayClamped());
-  const yestD=new Date(todayClamped());yestD.setDate(yestD.getDate()-1);const yestStr=fmt(yestD);
-  if(tila.pending==='post_workout_food'){
-    tila.pending=null;
-    const match=Object.keys(FOOD_SUGGESTIONS).find(k=>t.includes(k));
-    if(match){tilaSay(`Good choice, Boss! Here's what you can have with ${match} after your workout:`,foodCardsHtml(FOOD_SUGGESTIONS[match]));}
-    else{tilaSay('I don\'t have suggestions for that yet, Boss. Try paneer, chicken, egg, dal, curd, banana, or whey.');}
-    return;
-  }
-  if(/what should i eat.*(after (the )?gym|post.?workout|after workout)|after (the )?gym.*(eat|food)|post.?workout.*(eat|food|meal)/.test(t)){
-    tilaSay('Sure, Boss — what would you like to eat? Tell me an ingredient, like paneer, chicken, egg, dal, curd, banana, or whey.');
-    tila.pending='post_workout_food';return;
-  }
-  if(/hello|hi tila/.test(t)){tilaSay('Hello Boss! I\'m ready to help you track your fitness journey. What would you like to know?');return;}
-  if(/what.*(left|remaining)/.test(t)){
-    const r=loadDay(todayStr);const missing=[];
-    MEALS.forEach(([k,l])=>{if(!r.meals[k])missing.push(l);});
-    if(r.workout.applicable&&!r.workout.done)missing.push('Workout');
-    if(!missing.length){tilaSay('Nothing left, Boss — today is fully complete!');}
-    else{tilaSay('Still pending, Boss: '+missing.slice(0,6).join(', ')+(missing.length>6?'...':''));}
-    return;
-  }
-  if(/mark.*(workout).*(complet|done)/.test(t)){
-    confirmAction('Mark today\'s workout as completed?',()=>{
-      const r=loadDay(curDate);r.workout.done=true;saveDay(curDate,r);if(curDate===todayStr)renderTracker();
-      tilaSay('Done, Boss! Workout marked completed and dashboard updated.');
+  var navAnchors=links.querySelectorAll('a');
+  navAnchors.forEach(function(a){a.addEventListener('click',closeMenu);});
+  var sections=Array.prototype.map.call(navAnchors,function(a){return document.querySelector(a.getAttribute('href'));}).filter(Boolean);
+  function setActive(){
+    var y=window.scrollY+window.innerHeight*0.3;
+    var id=null;
+    sections.forEach(function(s){if(s.offsetTop<=y)id=s.id;});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)id='contact';
+    navAnchors.forEach(function(a){
+      var on=a.getAttribute('href')==='#'+id;
+      a.classList.toggle('active',on);
+      if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
     });
-    return;
   }
-  if(/how much protein.*yesterday|yesterday.*protein/.test(t)){
-    const rep=reportFor(yestStr);
-    if(!rep){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that date yet.');return;}
-    const r=JSON.parse(localStorage.getItem('mft_'+yestStr));
-    tilaSay(`You had ${r.protein||0} g of protein yesterday, Boss.`);return;
-  }
-  if(/weight progress|weight trend/.test(t)){
-    document.querySelector('[data-tab=dashboard]').click();
-    tilaSay('Here\'s your weight progress, Boss — check the Dashboard chart.');return;
-  }
-  if(/how many workouts.*month|workouts.*this month/.test(t)){
-    const now=todayClamped();const count=allDates().filter(d=>{const dt=new Date(d);return dt.getMonth()===now.getMonth()&&dt.getFullYear()===now.getFullYear();})
-      .reduce((s,d)=>{const raw=localStorage.getItem('mft_'+d);if(!raw)return s;const r=JSON.parse(raw);return s+((r.workout.applicable&&r.workout.done)?1:0);},0);
-    tilaSay(`You've completed ${count} workouts this month, Boss.`);return;
-  }
-  if(/last 7 days|7-day|weekly report/.test(t)){
-    const days=rangeDates('7');const has=days.some(d=>localStorage.getItem('mft_'+d));
-    if(!has){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that period yet.');return;}
-    document.querySelector('[data-tab=dashboard]').click();document.getElementById('rangeSel').value='7';renderDashboard();
-    tilaSay('Here is your 7-day fitness report, Boss.');return;
-  }
-  if(/28.*september|sep(t)?.*28|report.*today|today.*report/.test(t)){
-    const target=/28/.test(t)?'2026-09-28':todayStr;
-    const rep=reportFor(target);
-    if(!rep){tilaSay('Sorry, Boss. I don\'t have any saved fitness records for that date yet.');return;}
-    tilaSay('Here are the reports, Boss. '+rep);return;
-  }
-  tilaSay('Sorry, Boss, I didn\'t quite catch that. Try: "what is left today", "mark my workout as completed", "weight progress", or "how many workouts this month".');
-}
-document.getElementById('tilaSend').onclick=()=>{const inp=document.getElementById('tilaText');if(inp.value.trim()){handleCommand(inp.value.trim());inp.value='';}};
-document.getElementById('tilaText').onkeydown=e=>{if(e.key==='Enter')document.getElementById('tilaSend').click();};
+  window.addEventListener('scroll',setActive,{passive:true});
+  window.addEventListener('resize',setActive);
+  setActive();
 
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-const micBtn=document.getElementById('tilaMic');
-if(SR){
-  const rec=new SR();rec.lang='en-US';rec.interimResults=false;
-  micBtn.onclick=()=>{tilaPanel.classList.add('open');tilaStatus('Listening');try{rec.start();}catch(e){}};
-  rec.onresult=e=>{const text=e.results[0][0].transcript;handleCommand(text);};
-  rec.onerror=()=>{tilaStatus('Ready');tilaSay('I couldn\'t hear that clearly, Boss — try typing instead.');};
-  rec.onend=()=>tilaStatus('Ready');
-}else{micBtn.style.display='none';}
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+  }else{
+    reveals.forEach(function(el){el.classList.add('in');});
+  }
 
-/* ---------- Init ---------- */
-function initApp(){loadSettingsUI();renderTracker();renderHome();initDb();}
-if(localStorage.getItem('mft_seen'))initApp();
+  var copyBtn=document.getElementById('copyEmail');
+  var msg=document.getElementById('copiedMsg');
+  copyBtn.addEventListener('click',function(){
+    var email='shikhajshetty@gmail.com';
+    function done(){msg.textContent='Copied';msg.classList.add('show');setTimeout(function(){msg.classList.remove('show');},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(done,function(){window.location.href='mailto:'+email;});
+    }else{
+      window.location.href='mailto:'+email;
+    }
+  });
+})();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </body>
 </html>
